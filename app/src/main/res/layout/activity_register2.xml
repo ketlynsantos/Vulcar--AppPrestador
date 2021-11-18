@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register"
+    tools:context=".Register2"
     android:background="@color/dark_blue">
+
 
     <ImageView
         android:id="@+id/img_back"
@@ -16,10 +17,10 @@
         android:background="@drawable/ic__arrow_back"/>
 
     <RelativeLayout
+        android:id="@+id/relative_layout_1"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
-
 
         <ImageView
             android:id="@+id/image_view_1"
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/image_view_1"
             android:fontFamily="@font/bold"
-            android:text="Bem Vindo"
+            android:text="Agora"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="45dp"/>
@@ -47,34 +48,19 @@
             android:layout_below="@id/text_view_1"
             android:layout_marginTop="-8dp"
             android:fontFamily="@font/regular"
-            android:text="Cadastre-se aqui"
+            android:text="Digite o seu endereço, por favor!"
             android:textColor="@color/clear_blue"
             android:textSize="18dp"/>
 
         <EditText
-            android:id="@+id/edt_name"
+            android:id="@+id/edt_endereco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_2"
+            android:layout_below="@+id/text_view_2"
             android:layout_marginTop="15dp"
             android:background="@drawable/textbox"
             android:fontFamily="@font/regular"
-            android:hint="Nome da Empresa"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
-
-        <EditText
-            android:id="@+id/edt_cnpj"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edt_name"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:hint="CNPJ"
+            android:hint="Endereço"
             android:padding="10dp"
             android:paddingStart="20dp"
             android:textColor="@color/white"
@@ -82,63 +68,116 @@
             android:textSize="20dp"/>
 
         <EditText
-            android:id="@+id/edt_email"
-            android:layout_width="match_parent"
+            android:id="@+id/edt_complemento"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_cnpj"
+            android:layout_below="@+id/edt_endereco"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
             android:background="@drawable/textbox"
             android:fontFamily="@font/regular"
-            android:hint="E-mail"
+            android:hint="Complemento"
             android:padding="10dp"
             android:paddingStart="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20dp"/>
 
         <EditText
-            android:id="@+id/edt_phone"
-            android:layout_width="match_parent"
+            android:id="@+id/edt_num"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_email"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:hint="Celular"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
-
-        <EditText
-            android:id="@+id/edt_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edt_phone"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:inputType="textPassword"
-            android:hint="Senha"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
-
-        <ImageButton
-            android:id="@+id/btn_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edt_password"
-            android:layout_marginTop="15dp"
-            android:rotation="180"
+            android:layout_toRightOf="@+id/edt_complemento"
             android:layout_alignParentRight="true"
-            android:background="@drawable/button_blue"
-            android:src="@drawable/ic__arrow_back"
-            android:padding="10dp"/>
-    </RelativeLayout>
+            android:layout_below="@+id/edt_endereco"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="Nº"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp"/>
 
+        <EditText
+            android:id="@+id/edt_bairro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_complemento"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="Bairro"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edt_cidade"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_bairro"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="Cidade"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edt_uf"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/edt_cidade"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/edt_bairro"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="UF"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edt_cep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_cidade"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="CEP"
+            android:padding="10dp"
+            android:paddingStart="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_register2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_cep"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_blue"
+            android:backgroundTint="@color/clear_blue"
+            android:fontFamily="@font/bold"
+            android:padding="10dp"
+            android:text="Cadastrar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20dp"/>
+    </RelativeLayout>
 
 </RelativeLayout>
