@@ -7,18 +7,13 @@
         android:icon="@drawable/select_icon_home"/>
 
     <item
-        android:id="@+id/search"
-        android:title="Pedidos"
-        android:icon="@drawable/select_icon_search"/>
-
-    <item
         android:id="@+id/requests"
-        android:title="Perfil"
+        android:title="Pedidos"
         android:icon="@drawable/select_icon_requests"/>
-<!--
+
     <item
         android:id="@+id/profile"
         android:title="Perfil"
         android:icon="@drawable/select_icon_profile"/>
--->
+
 </menu>

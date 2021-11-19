@@ -7,12 +7,7 @@
         android:icon="@drawable/select_icon_home"/>
 
     <item
-        android:id="@+id/search"
-        android:title="Pedidos"
-        android:icon="@drawable/select_icon_search"/>
-
-    <item
-        android:id="@+id/requests"
+        android:id="@+id/employee"
         android:title="Funcionarios"
         android:icon="@drawable/select_icon_requests"/>
 
