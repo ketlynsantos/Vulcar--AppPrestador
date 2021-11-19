@@ -10,5 +10,11 @@ public class HomeEmployee extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_employee);
+        getSupportActionBar().hide();
+        getIds();
+    }
+
+    public void getIds(){
+
     }
 }

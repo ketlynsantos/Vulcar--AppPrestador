@@ -3,8 +3,12 @@ package com.example.appprestador;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
@@ -13,6 +17,7 @@ public class Register2 extends AppCompatActivity {
 
     EditText edtEndereco, edtComplemento, edtNumero, edtBairro, edtCidade, edtUf, edtCEP;
     AppCompatButton btnRegister2;
+    ImageView imgBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +27,44 @@ public class Register2 extends AppCompatActivity {
         getIds();
         maskFormat();
 
+        btnRegister2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = getIntent().getStringExtra("name");
+                String cnpj = getIntent().getStringExtra("cnpj");
+                String email = getIntent().getStringExtra("email");
+                String phone = getIntent().getStringExtra("phone");
+                String password = getIntent().getStringExtra("password");
+
+                String endereco = edtEndereco.getText().toString();
+                String complemento = edtComplemento.getText().toString();
+                String numero = edtNumero.getText().toString();
+                String bairro = edtBairro.getText().toString();
+                String cidade = edtCidade.getText().toString();
+                String uf = edtUf.getText().toString();
+                String cep = edtCEP.getText().toString();
+
+                boolean checkValidations = validationRegister(endereco, numero, bairro,
+                                                                 cidade, uf, cep);
+
+                if(checkValidations == true){
+                    Toast.makeText(Register2.this, "Sucesso!"+ " "+ name +" "+ complemento, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register2.this, Register.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public void getIds(){
+        imgBack = findViewById(R.id.img_back);
         edtEndereco = findViewById(R.id.edt_endereco);
         edtComplemento = findViewById(R.id.edt_complemento);
         edtNumero = findViewById(R.id.edt_num);
@@ -32,6 +72,7 @@ public class Register2 extends AppCompatActivity {
         edtCidade = findViewById(R.id.edt_cidade);
         edtUf = findViewById(R.id.edt_uf);
         edtCEP = findViewById(R.id.edt_cep);
+
         btnRegister2 = findViewById(R.id.btn_register2);
     }
 
