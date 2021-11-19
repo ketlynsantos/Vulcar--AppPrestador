@@ -1,4 +1,4 @@
-package com.example.appprestador;
+package com.example.appprestador.Business;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,13 +8,16 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.appprestador.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Home extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
     public ImageView imgGoToAddress;
+    public TextView txtAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,13 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        txtAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, MyAddress.class));
+            }
+        });
+
         imgGoToAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,8 +65,9 @@ public class Home extends AppCompatActivity {
 
     }
 
-    public void getIds(){
+    private void getIds(){
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         imgGoToAddress = findViewById(R.id.img_go_address);
+        txtAddress = findViewById(R.id.txt_address);
     }
 }

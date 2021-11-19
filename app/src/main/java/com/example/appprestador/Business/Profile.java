@@ -1,4 +1,4 @@
-package com.example.appprestador;
+package com.example.appprestador.Business;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,21 +7,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.appprestador.Business.Employee;
+import com.example.appprestador.Business.Home;
+import com.example.appprestador.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ProfileEmployee extends AppCompatActivity {
+public class Profile extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_employee);
+        setContentView(R.layout.activity_profile);
 
         getSupportActionBar().hide();
         getIds();
-
-
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -30,13 +31,13 @@ public class ProfileEmployee extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     case R.id.profile:
                         return true;
-                    case R.id.requests:
-                        startActivity(new Intent(getApplicationContext(), Requests.class));
+                    case R.id.employee:
+                        startActivity(new Intent(getApplicationContext(), Employee.class));
                         overridePendingTransition(0,0);
                         finish();
                         return true;
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomeEmployee.class));
+                        startActivity(new Intent(getApplicationContext(), Home.class));
                         overridePendingTransition(0,0);
                         finish();
                         return true;
@@ -46,7 +47,7 @@ public class ProfileEmployee extends AppCompatActivity {
         });
     }
 
-    public void getIds(){
+    private void getIds(){
         bottomNavigationView = findViewById(R.id.bottom_navigation);
     }
 }

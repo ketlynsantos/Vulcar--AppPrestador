@@ -1,4 +1,4 @@
-package com.example.appprestador;
+package com.example.appprestador.Business;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.appprestador.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Employee extends AppCompatActivity {
@@ -43,7 +44,7 @@ public class Employee extends AppCompatActivity {
         });
     }
 
-    public void getIds(){
+    private void getIds(){
         bottomNavigationView = findViewById(R.id.bottom_navigation);
     }
 }

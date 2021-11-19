@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".Employee">
+    tools:context=".Business.Employee">
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
