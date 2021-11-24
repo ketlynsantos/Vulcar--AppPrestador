@@ -10,14 +10,27 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.appprestador.Model.Business;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import cz.msebera.android.httpclient.Header;
+
 
 public class Register2 extends AppCompatActivity {
 
     EditText edtEndereco, edtComplemento, edtNumero, edtBairro, edtCidade, edtUf, edtCEP;
     AppCompatButton btnRegister2;
     ImageView imgBack;
+
+    //Connection MySQL
+    String HOST = "http://172.20.10.5/vulcar_database/Business/";
+    RequestParams params = new RequestParams();
+    AsyncHttpClient cliente;
+    Business business = new Business();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,30 +39,12 @@ public class Register2 extends AppCompatActivity {
         getSupportActionBar().hide();
         getIds();
         maskFormat();
+        cliente = new AsyncHttpClient();
 
         btnRegister2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = getIntent().getStringExtra("name");
-                String cnpj = getIntent().getStringExtra("cnpj");
-                String email = getIntent().getStringExtra("email");
-                String phone = getIntent().getStringExtra("phone");
-                String password = getIntent().getStringExtra("password");
-
-                String endereco = edtEndereco.getText().toString();
-                String complemento = edtComplemento.getText().toString();
-                String numero = edtNumero.getText().toString();
-                String bairro = edtBairro.getText().toString();
-                String cidade = edtCidade.getText().toString();
-                String uf = edtUf.getText().toString();
-                String cep = edtCEP.getText().toString();
-
-                boolean checkValidations = validationRegister(endereco, numero, bairro,
-                                                                 cidade, uf, cep);
-
-                if(checkValidations == true){
-                    Toast.makeText(Register2.this, "Sucesso!"+ " "+ name +" "+ complemento, Toast.LENGTH_SHORT).show();
-                }
+                montaObj();
             }
         });
 
@@ -59,6 +54,82 @@ public class Register2 extends AppCompatActivity {
                 Intent intent = new Intent(Register2.this, Register.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+    }
+
+    private void montaObj() {
+        String name = getIntent().getStringExtra("name");
+        String cnpj = getIntent().getStringExtra("cnpj");
+        String email = getIntent().getStringExtra("email");
+        String phone = getIntent().getStringExtra("phone");
+        String password = getIntent().getStringExtra("password");
+
+        String endereco = edtEndereco.getText().toString();
+        String complemento = edtComplemento.getText().toString();
+        String numero = edtNumero.getText().toString();
+        String bairro = edtBairro.getText().toString();
+        String cidade = edtCidade.getText().toString();
+        String uf = edtUf.getText().toString();
+        String cep = edtCEP.getText().toString();
+        int sts = 3;
+
+        boolean checkValidations = validationRegister(endereco, numero, bairro,
+                cidade, uf, cep);
+
+        if(checkValidations == true){
+            business.setNome(name);
+            business.setCnpj(cnpj);
+            business.setEmail(email);
+            business.setPhone(phone);
+            business.setPassword(password);
+            business.setAddress(endereco);
+            business.setComplement(complemento);
+            business.setNumber(numero);
+            business.setNeighborhood(bairro);
+            business.setCity(cidade);
+            business.setUf(uf);
+            business.setCep(cep);
+            business.setSts(sts);
+            cadastrarBusiness(business);
+        } else {
+            Toast.makeText(this, "Falha ao cadastrar!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void cadastrarBusiness(Business business) {
+        String url = HOST+"create.php";
+
+        params.put("name", business.getNome());
+        params.put("cnpj", business.getCnpj());
+        params.put("email", business.getEmail());
+        params.put("phone", business.getPhone());
+        params.put("pass", business.getPassword());
+        params.put("address", business.getAddress());
+        params.put("number", business.getNumber());
+        params.put("complement", business.getComplement());
+        params.put("neighborhood", business.getNeighborhood());
+        params.put("city", business.getCity());
+        params.put("uf", business.getUf());
+        params.put("cep", business.getCep());
+        params.put("sts", business.getSts());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    Toast.makeText(Register2.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Register2.this, Login.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(Register2.this, "Falha ao criar a conta!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
             }
         });
     }
