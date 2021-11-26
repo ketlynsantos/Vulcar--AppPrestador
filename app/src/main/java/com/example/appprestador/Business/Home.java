@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.appprestador.R;
@@ -16,8 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Home extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
-    public ImageView imgGoToAddress;
-    public TextView txtAddress;
+    public TextView txtStatus;
+    public Switch swStatusBusiness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +51,14 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        txtAddress.setOnClickListener(new View.OnClickListener() {
+        swStatusBusiness.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Home.this, MyAddress.class));
-            }
-        });
-
-        imgGoToAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Home.this, MyAddress.class));
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked == true) {
+                    txtStatus.setText("Aberto");
+                } else {
+                    txtStatus.setText("Fechado");
+                }
             }
         });
 
@@ -67,7 +66,7 @@ public class Home extends AppCompatActivity {
 
     private void getIds(){
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        imgGoToAddress = findViewById(R.id.img_go_address);
-        txtAddress = findViewById(R.id.txt_address);
+        txtStatus = findViewById(R.id.txt_status);
+        swStatusBusiness = findViewById(R.id.switch_status_business);
     }
 }
