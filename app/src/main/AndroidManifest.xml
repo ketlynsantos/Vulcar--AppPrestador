@@ -21,12 +21,12 @@
         <activity android:name=".Business.Profile" />
         <activity android:name=".Business.Employee" />
         <activity android:name=".Employee.HomeEmployee" />
-        <activity android:name=".Business.Home" />
+        <activity android:name=".SplashScreen"/>
         <activity android:name=".Register2" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".Business.Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
