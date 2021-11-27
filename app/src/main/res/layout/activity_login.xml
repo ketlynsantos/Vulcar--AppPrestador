@@ -26,20 +26,20 @@
             android:id="@+id/radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/image_view_1"
             android:layout_centerHorizontal="true"
-            android:orientation="horizontal"
-            android:layout_below="@id/image_view_1">
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/rb_empresa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
+                android:checked="true"
                 android:fontFamily="@font/regular"
                 android:text="Empresa"
                 android:textColor="@color/white"
-                android:textSize="16dp"
-                android:checked="true"/>
+                android:textSize="16dp" />
 
             <RadioButton
                 android:id="@+id/rb_funcionario"
@@ -48,7 +48,7 @@
                 android:fontFamily="@font/regular"
                 android:text="Funcionário"
                 android:textColor="@color/white"
-                android:textSize="16dp"/>
+                android:textSize="16dp" />
         </RadioGroup>
 
         <TextView
@@ -71,7 +71,7 @@
             android:fontFamily="@font/regular"
             android:text="Faça seu login para continuar"
             android:textColor="@color/clear_blue"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
 
         <!-- Área login empresa -->
         <RelativeLayout
@@ -81,49 +81,51 @@
             android:layout_below="@id/text_view_2"
             android:visibility="visible">
 
-                <EditText
-                    android:id="@+id/edit_cnpj"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/textbox"
-                    android:fontFamily="@font/regular"
-                    android:hint="CNPJ"
-                    android:padding="10dp"
-                    android:paddingStart="20dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="16dp"/>
+            <EditText
+                android:id="@+id/edit_cnpj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/textbox"
+                android:fontFamily="@font/regular"
+                android:hint="CNPJ"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:padding="10dp"
+                android:paddingStart="20dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16dp" />
 
-                <EditText
-                    android:id="@+id/edit_password_buss"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/edit_cnpj"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/textbox"
-                    android:fontFamily="@font/regular"
-                    android:hint="Senha"
-                    android:inputType="textPassword"
-                    android:padding="10dp"
-                    android:paddingStart="20dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="16dp"/>
+            <EditText
+                android:id="@+id/edit_password_buss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edit_cnpj"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/textbox"
+                android:fontFamily="@font/regular"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:paddingStart="20dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_login_business"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_below="@id/edit_password_buss"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/button_blue"
-                    android:backgroundTint="@color/clear_blue"
-                    android:fontFamily="@font/bold"
-                    android:text="Login"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16dp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login_business"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/edit_password_buss"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_blue"
+                android:backgroundTint="@color/clear_blue"
+                android:fontFamily="@font/bold"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/txt_forget_password_bus"
@@ -155,12 +157,13 @@
                 android:background="@drawable/textbox"
                 android:fontFamily="@font/regular"
                 android:hint="CPF"
-                android:inputType="text"
+                android:importantForAutofill="no"
+                android:inputType="number"
                 android:padding="10dp"
                 android:paddingStart="20dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="16dp"/>
+                android:textSize="16dp" />
 
             <EditText
                 android:id="@+id/edit_password_employee"
@@ -176,7 +179,7 @@
                 android:paddingStart="20dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="16dp"/>
+                android:textSize="16dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_login_employee"
@@ -190,7 +193,7 @@
                 android:text="Login"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="16dp"/>
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/txt_forget_password_emp"
@@ -214,9 +217,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:visibility="visible"
         android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/text_view_3"
@@ -225,7 +228,7 @@
             android:fontFamily="@font/regular"
             android:text="Não possui uma conta?"
             android:textColor="@color/white"
-            android:textSize="16dp"/>
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/txt_register"

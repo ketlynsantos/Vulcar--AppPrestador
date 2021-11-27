@@ -16,7 +16,6 @@ public class MyAddress extends AppCompatActivity {
     public ImageView imgBack;
     public AppCompatButton btnEdit;
     public TextView txtAddress;
-    public TextView txtNumber;
     public TextView txtNeighborhood;
     public TextView txtCity;
     public TextView txtUF;
@@ -53,7 +52,6 @@ public class MyAddress extends AppCompatActivity {
         imgBack = findViewById(R.id.img_back);
         btnEdit = findViewById(R.id.btn_edit);
         txtAddress = findViewById(R.id.txt_address);
-        txtNumber = findViewById(R.id.txt_number);
         txtNeighborhood = findViewById(R.id.txt_neighborhood);
         txtCity = findViewById(R.id.txt_city);
         txtUF = findViewById(R.id.txt_uf);

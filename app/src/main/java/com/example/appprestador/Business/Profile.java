@@ -80,7 +80,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-        rlAddress.setOnClickListener(new View.OnClickListener() {
+        rlLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Profile.this, Login.class));
