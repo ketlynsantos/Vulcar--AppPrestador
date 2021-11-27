@@ -17,7 +17,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/background_menu"
         android:elevation="2dp"
-        android:padding="5dp"
+        android:padding="2dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
@@ -40,9 +40,9 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/img_photo"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:id="@+id/img_logo_business"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:background="@drawable/img_corners"
                     android:backgroundTint="@color/white" />
 
@@ -51,12 +51,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_toRightOf="@id/img_photo"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@id/img_logo_business"
                     android:fontFamily="@font/semibold"
-                    android:text="Daniel Nascimento"
+                    android:text="Lava Rapido"
                     android:textColor="@color/white"
-                    android:textSize="24dp" />
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -69,7 +69,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
-                    android:id="@+id/rl_edit_data"
+                    android:id="@+id/rl_data"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -78,7 +78,7 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_person" />
+                        android:background="@drawable/ic_business" />
 
                     <TextView
                         android:id="@+id/text_view_1"
@@ -87,9 +87,9 @@
                         android:layout_marginStart="15dp"
                         android:layout_toRightOf="@id/image_view_1"
                         android:fontFamily="@font/semibold"
-                        android:text="Meus Dados"
+                        android:text="Dados"
                         android:textColor="@color/white"
-                        android:textSize="22dp" />
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/text_view_2"
@@ -100,13 +100,13 @@
                         android:layout_marginTop="-5dp"
                         android:layout_toRightOf="@id/image_view_1"
                         android:fontFamily="@font/light"
-                        android:text="Alterar meus dados da conta"
+                        android:text="Meus dados da empresa"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/ic_arrow"
@@ -125,7 +125,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/rl_cars"
+                    android:id="@+id/rl_services"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="15dp">
@@ -135,7 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_car" />
+                        android:background="@drawable/ic_services" />
 
                     <TextView
                         android:id="@+id/text_view_4"
@@ -144,9 +144,9 @@
                         android:layout_marginStart="15dp"
                         android:layout_toRightOf="@id/image_view_2"
                         android:fontFamily="@font/semibold"
-                        android:text="Automóveis"
+                        android:text="Serviços"
                         android:textColor="@color/white"
-                        android:textSize="22dp" />
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/text_view_5"
@@ -157,13 +157,13 @@
                         android:layout_marginTop="-5dp"
                         android:layout_toRightOf="@id/image_view_2"
                         android:fontFamily="@font/light"
-                        android:text="Meus automóveis"
+                        android:text="Meus serviços"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/ic_arrow"
@@ -182,48 +182,105 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/rl_cars"
+                    android:id="@+id/rl_address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="15dp">
 
                     <ImageView
-                        android:id="@+id/image_view_2"
+                        android:id="@+id/image_view_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_address" />
+
+                    <TextView
+                        android:id="@+id/text_view_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_toRightOf="@id/image_view_3"
+                        android:fontFamily="@font/semibold"
+                        android:text="Endereço"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/text_view_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_view_7"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="-5dp"
+                        android:layout_toRightOf="@id/image_view_3"
+                        android:fontFamily="@font/light"
+                        android:text="Meu endereço da empresa"
+                        android:textColor="@color/white"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_arrow"
+                        android:rotation="270" />
+
+                    <TextView
+                        android:id="@+id/text_view_9"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/text_view_8"
+                        android:layout_marginTop="15dp"
+                        android:alpha="0.1"
+                        android:background="@color/white"
+                        android:elevation="1dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:id="@+id/image_view_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:background="@drawable/ic_logout"
-                        android:rotation="180"/>
+                        android:rotation="180" />
 
                     <TextView
-                        android:id="@+id/text_view_4"
+                        android:id="@+id/text_view_10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@id/image_view_2"
+                        android:layout_toRightOf="@id/image_view_4"
                         android:fontFamily="@font/semibold"
                         android:text="Sair"
                         android:textColor="@color/white"
-                        android:textSize="22dp" />
+                        android:textSize="18dp" />
 
                     <TextView
-                        android:id="@+id/text_view_5"
+                        android:id="@+id/text_view_11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/text_view_4"
+                        android:layout_below="@id/text_view_10"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="-5dp"
-                        android:layout_toRightOf="@id/image_view_2"
+                        android:layout_toRightOf="@id/image_view_4"
                         android:fontFamily="@font/light"
                         android:text="Fazer logout"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/text_view_6"
+                        android:id="@+id/text_view_12"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_below="@id/text_view_5"
+                        android:layout_below="@id/text_view_11"
                         android:layout_marginTop="15dp"
                         android:alpha="0.1"
                         android:background="@color/white"

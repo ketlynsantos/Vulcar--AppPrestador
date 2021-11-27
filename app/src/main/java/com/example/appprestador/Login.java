@@ -40,8 +40,10 @@ public class Login extends AppCompatActivity {
     LinearLayout linearLayout1;
 
     //Connection MySQL
-    String HOST = "http://172.20.10.5/vulcar_database/";
+    //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.15.128/vulcar_database/";
+    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/";
+
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
     Business business = new Business();
