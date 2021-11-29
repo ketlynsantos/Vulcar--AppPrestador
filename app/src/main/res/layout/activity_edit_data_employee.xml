@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".Business.EditAddress">
+    tools:context=".Employee.EditDataEmployee">
 
     <RelativeLayout
         android:id="@+id/relative_layout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="15dp">
 
         <ImageView
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/semibold"
-            android:text="Editar Endereço"
+            android:text="Alterar meus dados"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20dp" />
@@ -43,13 +43,13 @@
         android:layout_marginRight="15dp">
 
         <EditText
-            android:id="@+id/edt_new_endereco"
+            android:id="@+id/edt_new_name_emp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_view_2"
             android:background="@drawable/textbox"
             android:fontFamily="@font/regular"
-            android:hint="Endereço"
+            android:hint="Nome e Sobrenome"
             android:padding="10dp"
             android:paddingStart="20dp"
             android:textColor="@color/white"
@@ -57,47 +57,15 @@
             android:textSize="16dp" />
 
         <EditText
-            android:id="@+id/edt_new_complemento"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edt_new_endereco"
-            android:layout_marginTop="18dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:hint="Complemento"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16dp" />
-
-        <EditText
-            android:id="@+id/edt_new_num"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edt_new_endereco"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="18dp"
-            android:layout_toRightOf="@+id/edt_new_complemento"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:hint="Nº"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16dp" />
-
-        <EditText
-            android:id="@+id/edt_new_bairro"
+            android:id="@+id/edt_new_cpf_emp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_new_complemento"
-            android:layout_marginTop="18dp"
+            android:layout_below="@id/edt_new_name_emp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/textbox"
             android:fontFamily="@font/regular"
-            android:hint="Bairro"
+            android:hint="CPF"
+            android:inputType="number"
             android:padding="10dp"
             android:paddingStart="20dp"
             android:textColor="@color/white"
@@ -105,49 +73,31 @@
             android:textSize="16dp" />
 
         <EditText
-            android:id="@+id/edt_new_cidade"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edt_new_bairro"
-            android:layout_marginTop="18dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:hint="Cidade"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16dp" />
-
-        <EditText
-            android:id="@+id/edt_new_uf"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edt_new_bairro"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="18dp"
-            android:layout_toRightOf="@+id/edt_new_cidade"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
-            android:hint="UF"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16dp" />
-
-        <EditText
-            android:id="@+id/edt_new_cep"
+            android:id="@+id/edt_new_email_emp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_new_cidade"
-            android:layout_marginTop="18dp"
+            android:layout_below="@id/edt_new_cpf_emp"
             android:background="@drawable/textbox"
             android:fontFamily="@font/regular"
-            android:hint="CEP"
+            android:hint="E-mail"
+            android:layout_marginTop="20dp"
             android:padding="10dp"
-            android:paddingStart="15dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/edt_new_phone_emp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_new_email_emp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/textbox"
+            android:fontFamily="@font/regular"
+            android:hint="Telefone"
+            android:padding="10dp"
+            android:paddingStart="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="16dp" />
@@ -155,7 +105,7 @@
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_edit_address"
+        android:id="@+id/btn_edit_data_emp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
@@ -167,7 +117,7 @@
         android:backgroundTint="@color/clear_blue"
         android:elevation="2dp"
         android:fontFamily="@font/bold"
-        android:text="Editar"
+        android:text="Alterar"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16dp" />

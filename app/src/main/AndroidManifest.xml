@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.appprestador">
-
     <!-- Permissions to Connection MySQL -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -14,19 +13,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppPrestador">
-        <activity android:name=".Business.EditAddress"></activity>
+        <activity android:name=".Employee.EditDataEmployee"></activity>
+        <activity android:name=".Business.EditAddress" />
         <activity android:name=".Employee.Requests" />
         <activity android:name=".Employee.ProfileEmployee" />
         <activity android:name=".Business.MyAddress" />
         <activity android:name=".Business.Profile" />
         <activity android:name=".Business.Employee" />
         <activity android:name=".Employee.HomeEmployee" />
-        <activity android:name=".SplashScreen"/>
+        <activity android:name=".Business.Home" />
         <activity android:name=".Register2" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Business.Home">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

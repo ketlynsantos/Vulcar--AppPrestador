@@ -17,26 +17,186 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/background_menu"
         android:elevation="2dp"
-        android:padding="5dp"
+        android:padding="2dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_navigator_employee" />
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll_view_1"
+        android:id="@+id/nested_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/relative_layout_2"
-            android:layout_width="wrap_content"
+            android:id="@+id/relative_layout_1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp">
+            android:padding="15dp">
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_logo_business"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/img_corners"
+                    android:backgroundTint="@color/white" />
+
+                <TextView
+                    android:id="@+id/txt_name_employee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@id/img_logo_business"
+                    android:fontFamily="@font/semibold"
+                    android:text="Daniel Nascimento"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_3"
+                android:layout_width="383dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relative_layout_2"
+                android:layout_marginTop="35dp">
+
+                <TextView
+                    android:id="@+id/text_view_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bold"
+                    android:text="CPF"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/txt_cpf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view_1"
+                    android:fontFamily="@font/regular"
+                    android:text="53.974.896899"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/text_line_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/txt_cpf"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:alpha="0.1"
+                    android:background="@color/white"
+                    android:elevation="1dp" />
+
+                <TextView
+                    android:id="@+id/text_view_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_line_1"
+                    android:fontFamily="@font/bold"
+                    android:text="E-mail"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/txt_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view_3"
+                    android:fontFamily="@font/regular"
+                    android:text="ketlyn@gmail.com"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/text_line_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/txt_email"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:alpha="0.1"
+                    android:background="@color/white"
+                    android:elevation="1dp" />
+
+                <TextView
+                    android:id="@+id/text_view_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_line_2"
+                    android:fontFamily="@font/bold"
+                    android:text="Telefone"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/txt_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view_4"
+                    android:fontFamily="@font/regular"
+                    android:text="(11) 98289-8502"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/text_line_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/txt_phone"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:alpha="0.1"
+                    android:background="@color/white"
+                    android:elevation="1dp" />
+
+                <TextView
+                    android:id="@+id/text_view_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_line_3"
+                    android:fontFamily="@font/bold"
+                    android:text="Empresa"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/txt_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view_6"
+                    android:fontFamily="@font/regular"
+                    android:text="Lava Rapido"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_edit_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textColor="@color/white"
+                    android:text="Alterar meus dados"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/bold"
+                    android:textSize="16dp"
+                    android:layout_below="@id/txt_business"
+                    android:background="@drawable/button_blue"
+                    android:elevation="2dp"
+                    android:layout_marginTop="15dp"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>
