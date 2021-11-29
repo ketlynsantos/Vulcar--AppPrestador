@@ -97,8 +97,6 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this, Register.class));
             }
         });
-
-
     }
 
     private void montaObjBusiness() {
@@ -130,7 +128,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void funcLoginBus(Business business) {
-        String url = HOST+"Business/login.php";
+        String url = HOST + "Business/login.php";
 
         params.put("cnpj", business.getCnpj());
         params.put("pass", business.getPassword());
@@ -163,7 +161,6 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "Erro ao Logar 2!", Toast.LENGTH_SHORT).show();
                     }
                 }
-
             }
 
             @Override
@@ -174,7 +171,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void funcLoginEmp(Employee employee) {
-        String url = HOST+"Employee/login.php";
+        String url = HOST + "Employee/login.php";
 
         params.put("cpf", employee.getCpf());
         params.put("pass", employee.getPassword());
@@ -189,7 +186,7 @@ public class Login extends AppCompatActivity {
                             String id = result.getString("LOGIN");
                             String status = result.getString("STATUS");
 
-                            if(status != "5"){
+                            if(status != "5") {
                                 Intent intent = new Intent(Login. this, HomeEmployee.class);
                                 intent.putExtra("id", id);
                                 startActivity(intent);
@@ -205,7 +202,6 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "Erro ao Logar!", Toast.LENGTH_SHORT).show();
                     }
                 }
-
             }
 
             @Override
@@ -236,7 +232,7 @@ public class Login extends AppCompatActivity {
 
 
     public void maskFormat() {
-        SimpleMaskFormatter mask_cnpj = new SimpleMaskFormatter("NN-NNN.NNN/NNNN-NN");
+        SimpleMaskFormatter mask_cnpj = new SimpleMaskFormatter("NN.NNN.NNN/NNNN-NN");
         MaskTextWatcher mtw_cnpj = new MaskTextWatcher(editCnpj, mask_cnpj);
         editCnpj.addTextChangedListener(mtw_cnpj);
 
