@@ -70,7 +70,7 @@ public class Register extends AppCompatActivity {
     }
 
     public void maskFormat(){
-        SimpleMaskFormatter mask_cnpj = new SimpleMaskFormatter("NN-NNN.NNN/NNNN-NN");
+        SimpleMaskFormatter mask_cnpj = new SimpleMaskFormatter("NN.NNN.NNN/NNNN-NN");
         MaskTextWatcher mtw_cnpj = new MaskTextWatcher(edtCnpj, mask_cnpj);
         edtCnpj.addTextChangedListener(mtw_cnpj);
 
