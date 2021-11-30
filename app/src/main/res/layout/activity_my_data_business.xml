@@ -64,7 +64,7 @@
                 android:layout_below="@id/text_view_1"
                 android:layout_marginTop="-5dp"
                 android:fontFamily="@font/light"
-                android:text="Nome da empresa e CPNJ, "
+                android:text="Nome da empresa e CPNJ"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
 

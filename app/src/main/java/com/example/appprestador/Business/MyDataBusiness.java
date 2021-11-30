@@ -40,6 +40,22 @@ public class MyDataBusiness extends AppCompatActivity {
                 startActivity(itD);
             }
         });
+
+        rlContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itC = new Intent(MyDataBusiness.this, EditDataContact.class);
+                startActivity(itC);
+            }
+        });
+
+        rlPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itP = new Intent(MyDataBusiness.this, EditPasswordBusiness.class);
+                startActivity(itP);
+            }
+        });
     }
 
     private void getIds() {
