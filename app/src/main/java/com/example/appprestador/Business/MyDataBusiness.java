@@ -48,6 +48,14 @@ public class MyDataBusiness extends AppCompatActivity {
                 startActivity(itC);
             }
         });
+
+        rlPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itP = new Intent(MyDataBusiness.this, EditPasswordBusiness.class);
+                startActivity(itP);
+            }
+        });
     }
 
     private void getIds() {

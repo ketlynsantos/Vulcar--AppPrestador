@@ -59,7 +59,6 @@ public class Register extends AppCompatActivity {
         });
     }
 
-
     public void getIds(){
         edtName = findViewById(R.id.edt_name);
         edtCnpj = findViewById(R.id.edt_cnpj);

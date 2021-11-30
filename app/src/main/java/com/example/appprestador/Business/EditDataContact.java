@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.appprestador.R;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class EditDataContact extends AppCompatActivity {
@@ -25,6 +27,7 @@ public class EditDataContact extends AppCompatActivity {
 
         getSupportActionBar().hide();
         getIds();
+        maskFormat();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,5 +51,11 @@ public class EditDataContact extends AppCompatActivity {
         edtEmail = findViewById(R.id.edt_email_business);
         edtPhone = findViewById(R.id.edt_phone_businesss);
         btnEdit = findViewById(R.id.btn_edit_contact);
+    }
+
+    private void maskFormat() {
+        SimpleMaskFormatter mask_tel = new SimpleMaskFormatter("(NN) NNNNN-NNNN");
+        MaskTextWatcher mtw_tel = new MaskTextWatcher(edtPhone, mask_tel);
+        edtEmail.addTextChangedListener(mtw_tel);
     }
 }

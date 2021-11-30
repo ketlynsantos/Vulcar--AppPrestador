@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppPrestador">
-        <activity android:name=".Business.EditDataContact"></activity>
+        <activity android:name=".Business.EditPasswordBusiness"></activity>
+        <activity android:name=".Business.EditDataContact" />
         <activity android:name=".Business.MyServicesBusiness" />
         <activity android:name=".Business.EditDataBusiness" />
         <activity android:name=".Employee.EditDataEmployee" />
