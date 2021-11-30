@@ -57,20 +57,21 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-//        Só tirar as barras
-//        rlData.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        rlData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itD = new Intent(Profile.this, MyDataBusiness.class);
+                startActivity(itD);
+            }
+        });
 
-//        rlServices.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        rlServices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itS = new Intent(Profile.this, MyServicesBusiness.class);
+                startActivity(itS);
+            }
+        });
 
         rlAddress.setOnClickListener(new View.OnClickListener() {
             @Override

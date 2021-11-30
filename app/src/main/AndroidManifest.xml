@@ -13,9 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppPrestador">
-        <activity android:name=".Business.MyServicesBusiness"></activity>
-        <activity android:name=".Business.MyDataBusiness" />
-        <activity android:name=".SplashScreen" />
+        <activity android:name=".Business.EditDataContact"></activity>
+        <activity android:name=".Business.MyServicesBusiness" />
+        <activity android:name=".Business.EditDataBusiness" />
         <activity android:name=".Employee.EditDataEmployee" />
         <activity android:name=".Business.EditAddress" />
         <activity android:name=".Employee.Requests" />
@@ -29,7 +29,7 @@
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Business.EditDataBusiness">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -40,6 +40,14 @@ public class MyDataBusiness extends AppCompatActivity {
                 startActivity(itD);
             }
         });
+
+        rlContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itC = new Intent(MyDataBusiness.this, EditDataContact.class);
+                startActivity(itC);
+            }
+        });
     }
 
     private void getIds() {
