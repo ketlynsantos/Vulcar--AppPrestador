@@ -52,88 +52,155 @@
             android:textColor="@color/clear_blue"
             android:textSize="18dp" />
 
-        <EditText
-            android:id="@+id/edt_name"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_name_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_2"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
             android:hint="Nome da Empresa"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16dp" />
 
-        <EditText
-            android:id="@+id/edt_cnpj"
+            android:layout_below="@id/text_view_2"
+            android:layout_marginBottom="15dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_cnpj_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_name"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
             android:hint="CNPJ"
-            android:padding="10dp"
-            android:inputType="number"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16dp" />
+            android:layout_below="@id/edt_name_layout"
+            android:layout_marginBottom="15dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_email"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_cnpj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:inputType="number"
+                android:padding="10dp"
+                android:importantForAutofill="no"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_email_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_cnpj"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
             android:hint="E-mail"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16dp" />
+            android:layout_below="@id/edt_cnpj_layout"
+            android:layout_marginBottom="15dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_phone"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_phone_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_email"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
             android:hint="Celular"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16dp" />
+            android:layout_below="@id/edt_email_layout"
+            android:layout_marginBottom="15dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
 
-        <EditText
-            android:id="@+id/edt_password"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:inputType="number"
+                android:padding="10dp"
+                android:importantForAutofill="no"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_password_layout"
+            style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_phone"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/textbox"
-            android:fontFamily="@font/regular"
             android:hint="Senha"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16dp" />
+            android:layout_below="@id/edt_phone_layout"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:endIconMode="password_toggle"
+            app:endIconTint="#ABFFFFFF"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
             android:id="@+id/btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_password"
+            android:layout_below="@id/edt_password_layout"
             android:layout_alignParentRight="true"
             android:layout_marginTop="15dp"
             android:background="@drawable/button_blue"

@@ -21,16 +21,15 @@
         <activity android:name=".Business.EditAddress" />
         <activity android:name=".Employee.Requests" />
         <activity android:name=".Employee.ProfileEmployee" />
-        <activity android:name=".Business.MyAddress" />
         <activity android:name=".Business.Profile" />
         <activity android:name=".Business.Employee" />
         <activity android:name=".Employee.HomeEmployee" />
-        <activity android:name=".SplashScreen" />
+        <activity android:name=".Business.Home" />
         <activity android:name=".Register2" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Business.Home">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

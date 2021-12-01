@@ -11,10 +11,11 @@ import android.widget.ImageView;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class Register extends AppCompatActivity {
 
-    EditText edtName, edtCnpj, edtTelefone, edtEmail, edtPassword;
+    TextInputEditText edtName, edtCnpj, edtTelefone, edtEmail, edtPassword;
     ImageButton btnRegister;
     ImageView imgBack;
 
