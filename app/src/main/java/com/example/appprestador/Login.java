@@ -42,9 +42,8 @@ public class Login extends AppCompatActivity {
     LinearLayout linearLayout1;
 
     //Connection MySQL
-    String HOST = "http://172.20.10.5/vulcar_database/";
-    //String HOST = "http://192.168.15.128/vulcar_database/";
-    //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/";
+    //String HOST = "http://172.20.10.5/vulcar_database/";
+    String HOST = "http://192.168.15.127/vulcar_database/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -143,12 +142,11 @@ public class Login extends AppCompatActivity {
                         JSONObject result = new JSONObject(new String(responseBody));
                         if (!result.getString("LOGIN").equals(null)) {
                             String id = result.getString("LOGIN");
-                            String status = result.getString("STATUS");
-                            if(status == "2"){
+                            if(result.getString("STATUS").equals("2")){
                                 Toast.makeText(Login.this, "Conta recusada!", Toast.LENGTH_SHORT).show();
-                            } else if(status == "3"){
+                            } else if(result.getString("STATUS").equals("3")){
                                 Toast.makeText(Login.this, "Conta em análise!", Toast.LENGTH_SHORT).show();
-                            } else if(status == "5"){
+                            } else if(result.getString("STATUS").equals("5")){
                                 Toast.makeText(Login.this, "Conta banida!", Toast.LENGTH_SHORT).show();
                             } else {
                                 Intent intent = new Intent(Login.this, Home.class);
@@ -157,10 +155,10 @@ public class Login extends AppCompatActivity {
                                 finish();
                             }
                         } else {
-                            Toast.makeText(Login.this, "Erro ao Logar 1!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Erro ao Logar!", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
-                        Toast.makeText(Login.this, "Erro ao Logar 2!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Usuário ou senha incorretos!", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -186,9 +184,8 @@ public class Login extends AppCompatActivity {
                         JSONObject result = new JSONObject(new String(responseBody));
                         if (!result.getString("LOGIN").equals(null)) {
                             String id = result.getString("LOGIN");
-                            String status = result.getString("STATUS");
 
-                            if(status != "5") {
+                            if((!result.getString("STATUS").equals("5"))) {
                                 Intent intent = new Intent(Login. this, HomeEmployee.class);
                                 intent.putExtra("id", id);
                                 startActivity(intent);
