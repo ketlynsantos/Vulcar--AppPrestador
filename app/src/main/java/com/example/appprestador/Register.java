@@ -11,10 +11,11 @@ import android.widget.ImageView;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class Register extends AppCompatActivity {
 
-    EditText edtName, edtCnpj, edtTelefone, edtEmail, edtPassword;
+    TextInputEditText edtName, edtCnpj, edtTelefone, edtEmail, edtPassword;
     ImageButton btnRegister;
     ImageView imgBack;
 
@@ -70,7 +71,7 @@ public class Register extends AppCompatActivity {
     }
 
     public void maskFormat(){
-        SimpleMaskFormatter mask_cnpj = new SimpleMaskFormatter("NN-NNN.NNN/NNNN-NN");
+        SimpleMaskFormatter mask_cnpj = new SimpleMaskFormatter("NN.NNN.NNN/NNNN-NN");
         MaskTextWatcher mtw_cnpj = new MaskTextWatcher(edtCnpj, mask_cnpj);
         edtCnpj.addTextChangedListener(mtw_cnpj);
 

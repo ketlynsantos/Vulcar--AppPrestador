@@ -13,17 +13,18 @@ import android.widget.Toast;
 import com.example.appprestador.R;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class EditAddress extends AppCompatActivity {
 
     ImageView imgBack;
-    EditText edtNewAddress;
-    EditText edtNewNeighborhood;
-    EditText edtNewComplement;
-    EditText edtNewNumber;
-    EditText edtNewCity;
-    EditText edtNewUF;
-    EditText edtNewCep;
+    TextInputEditText edtNewAddress;
+    TextInputEditText edtNewNeighborhood;
+    TextInputEditText edtNewComplement;
+    TextInputEditText edtNewNumber;
+    TextInputEditText edtNewCity;
+    TextInputEditText edtNewUF;
+    TextInputEditText edtNewCep;
     AppCompatButton btnEditar;
 
     @Override
@@ -38,7 +39,7 @@ public class EditAddress extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditAddress.this, MyAddress.class);
+                Intent intent = new Intent(EditAddress.this, Profile.class);
                 startActivity(intent);
                 finish();
             }
@@ -66,11 +67,11 @@ public class EditAddress extends AppCompatActivity {
 
     private void getIds(){
         imgBack = findViewById(R.id.img_back);
-        edtNewAddress = findViewById(R.id.edt_new_endereco);
+        edtNewAddress = findViewById(R.id.edt_new_address);
         edtNewNumber = findViewById(R.id.edt_new_num);
-        edtNewNeighborhood = findViewById(R.id.edt_new_bairro);
-        edtNewComplement = findViewById(R.id.edt_new_complemento);
-        edtNewCity = findViewById(R.id.edt_new_cidade);
+        edtNewNeighborhood = findViewById(R.id.edt_new_neigh);
+        edtNewComplement = findViewById(R.id.edt_new_comp);
+        edtNewCity = findViewById(R.id.edt_new_city);
         edtNewUF = findViewById(R.id.edt_new_uf);
         edtNewCep = findViewById(R.id.edt_new_cep);
         btnEditar = findViewById(R.id.btn_edit_address);

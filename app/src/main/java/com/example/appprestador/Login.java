@@ -20,6 +20,8 @@ import com.example.appprestador.Model.Business;
 import com.example.appprestador.Model.Employee;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -34,15 +36,15 @@ public class Login extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton rbEmpresa, rbFuncionario;
     RelativeLayout relativeBusiness, relativeEmployee;
-    EditText editCnpj, editPassBuss, editCpf, editPassEmployee;
+    TextInputEditText editCnpj, editPassBuss, editCpf, editPassEmployee;
     TextView txtRegister;
     AppCompatButton btnLoginBusiness, btnLoginEmployee;
     LinearLayout linearLayout1;
 
     //Connection MySQL
-    //String HOST = "http://172.20.10.5/vulcar_database/";
+    String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.15.128/vulcar_database/";
-    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/";
+    //String HOST = "http://192.168.0.13/Vulcar--Syncmysql/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;

@@ -31,6 +31,7 @@ public class EditPasswordBusiness extends AppCompatActivity {
             public void onClick(View v) {
                 Intent itI = new Intent(EditPasswordBusiness.this, MyDataBusiness.class);
                 startActivity(itI);
+                finish();
             }
         });
 

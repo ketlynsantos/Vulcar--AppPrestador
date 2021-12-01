@@ -76,7 +76,7 @@ public class Profile extends AppCompatActivity {
         rlAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent itAddress = new Intent(Profile.this, MyAddress.class);
+                Intent itAddress = new Intent(Profile.this, EditAddress.class);
                 startActivity(itAddress);
             }
         });

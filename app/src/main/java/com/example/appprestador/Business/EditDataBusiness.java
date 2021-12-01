@@ -34,6 +34,7 @@ public class EditDataBusiness extends AppCompatActivity {
             public void onClick(View v) {
                 Intent itI = new Intent(EditDataBusiness.this, MyDataBusiness.class);
                 startActivity(itI);
+                finish();
             }
         });
     }
