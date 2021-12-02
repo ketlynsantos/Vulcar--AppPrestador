@@ -1,18 +1,17 @@
 package com.example.appprestador;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.appprestador.Business.Home;
 import com.example.appprestador.Employee.HomeEmployee;
@@ -21,7 +20,6 @@ import com.example.appprestador.Model.Employee;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -43,7 +41,8 @@ public class Login extends AppCompatActivity {
 
     //Connection MySQL
     //String HOST = "http://172.20.10.5/vulcar_database/";
-    String HOST = "http://192.168.15.127/vulcar_database/";
+    //String HOST = "http://192.168.15.127/vulcar_database/";
+    String HOST = "http://192.168.0.106/vulcar_database/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
