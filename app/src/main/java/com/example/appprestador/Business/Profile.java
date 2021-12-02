@@ -14,8 +14,17 @@ import android.widget.TextView;
 import com.example.appprestador.Business.Employee;
 import com.example.appprestador.Business.Home;
 import com.example.appprestador.Login;
+import com.example.appprestador.Model.Business;
 import com.example.appprestador.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 public class Profile extends AppCompatActivity {
 
@@ -26,7 +35,16 @@ public class Profile extends AppCompatActivity {
     public RelativeLayout rlServices;
     public RelativeLayout rlAddress;
     public RelativeLayout rlLogout;
+    public String id;
 
+    //Connection MySQL
+    String HOST = "http://192.168.15.127/vulcar_database/Business/";
+    //String HOST = "http://172.20.10.5/vulcar_database/Business/";
+    RequestParams params = new RequestParams();
+    AsyncHttpClient cliente;
+
+    Business business = new Business();
+    Employee employee = new Employee();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +52,8 @@ public class Profile extends AppCompatActivity {
 
         getSupportActionBar().hide();
         getIds();
+        cliente = new AsyncHttpClient();
+        montaObj();
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,12 +63,16 @@ public class Profile extends AppCompatActivity {
                     case R.id.profile:
                         return true;
                     case R.id.employee:
-                        startActivity(new Intent(getApplicationContext(), Employee.class));
+                        Intent intent_e = new Intent(Profile.this, Employee.class);
+                        intent_e.putExtra("id", id);
+                        startActivity(intent_e);
                         overridePendingTransition(0,0);
                         finish();
                         return true;
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Home.class));
+                        Intent intent_h = new Intent(Profile.this, Home.class);
+                        intent_h.putExtra("id", id);
+                        startActivity(intent_h);
                         overridePendingTransition(0,0);
                         finish();
                         return true;
@@ -90,7 +114,32 @@ public class Profile extends AppCompatActivity {
         });
     }
 
+    private void montaObj() {
+        String url = HOST+"Select/select_business.php";
+        business.setId(id);
+        params.put("id", business.getId());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try {
+                    JSONObject jsonarray = new JSONObject(new String (responseBody));
+                    String nome = jsonarray.getString("LOJA_NOME");
+                    txtNameBusiness.setText(nome);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
     private void getIds() {
+        id = getIntent().getStringExtra("id");
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         imgLogo = findViewById(R.id.img_logo_business);
         txtNameBusiness = findViewById(R.id.txt_name_profile);
