@@ -37,8 +37,9 @@ public class Home extends AppCompatActivity {
     Employee employee = new Employee();
 
     //Connection MySQL
-    String HOST = "http://192.168.15.127/vulcar_database/Business/";
-    //String HOST = "http://172.20.10.5/vulcar_database/Business/";
+    //String HOST = "http://172.20.10.5/vulcar_database/";
+    //String HOST = "http://192.168.0.106/vulcar_database/";
+    String HOST = "http://192.168.15.123/vulcar_database/";
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
 
@@ -54,6 +55,7 @@ public class Home extends AppCompatActivity {
         cliente = new AsyncHttpClient();
         context = Home.this;
         montaObj();
+
         bottomNavigationView.setSelectedItemId(R.id.home);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -99,7 +101,7 @@ public class Home extends AppCompatActivity {
     }
 
     private void verifyStatus(Business business) {
-        String url = HOST+"Select/select_business.php";
+        String url = HOST+"Business/Select/select_business.php";
         params.put("id", business.getId());
         cliente.post(url, params, new AsyncHttpResponseHandler() {
             @Override
@@ -108,14 +110,16 @@ public class Home extends AppCompatActivity {
                     try{
                         JSONObject result = new JSONObject(new String(responseBody));
                         if(result.getString("STATUS_ID").equals("13")){
-                            Toast.makeText(Home.this, "Aberto", Toast.LENGTH_SHORT).show();
                             swStatusBusiness.setChecked(true);
                         } else if(result.getString("STATUS_ID").equals("14")){
-                            Toast.makeText(Home.this, "Fechado", Toast.LENGTH_SHORT).show();
                             swStatusBusiness.setChecked(false);
                         } else if(result.getString("STATUS_ID").equals("1")){
-                            Toast.makeText(Home.this, "Fechado", Toast.LENGTH_SHORT).show();
                             swStatusBusiness.setChecked(false);
+                        } else if(result.getString("STATUS_ID").equals("5")){
+                            Intent intent = new Intent(Home.this, Login.class);
+                            Toast.makeText(Home.this, "Estabelecimento banido!", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
                         } else{
                             Toast.makeText(employee, "Erro!", Toast.LENGTH_SHORT).show();
                         }
@@ -133,21 +137,47 @@ public class Home extends AppCompatActivity {
     }
 
     private void openBusiness() {
-        int sts = 13;
-        business.setId(id);
-        business.setSts(sts);
-
-        String url = HOST+"update_status.php";
+        String url = HOST+"Business/Select/select_business.php";
         params.put("id", business.getId());
-        params.put("sts", business.getSts());
         cliente.post(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if(statusCode == 200){
-                    txtStatus.setText("Aberto");
-                } else{
-                    txtStatus.setText("Fechado");
-                    Toast.makeText(employee, "Falha ao abrir!", Toast.LENGTH_SHORT).show();
+                    try{
+                        JSONObject result = new JSONObject(new String(responseBody));
+                        if(!result.getString("STATUS_ID").equals("5")){
+                            int sts = 13;
+                            business.setId(id);
+                            business.setSts(sts);
+
+                            String url = HOST+"Business/update_status.php";
+                            params.put("id", business.getId());
+                            params.put("sts", business.getSts());
+                            cliente.post(url, params, new AsyncHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                    if(statusCode == 200){
+                                        txtStatus.setText("Aberto");
+                                    } else{
+                                        txtStatus.setText("Fechado");
+                                        Toast.makeText(employee, "Falha ao abrir!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                                }
+                            });
+                        } else {
+                            Intent intent = new Intent(Home.this, Login.class);
+                            Toast.makeText(Home.this, "Estabelecimento banido!", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
+                        }
+                    }catch(JSONException e){
+                        Toast.makeText(employee, "Erro!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -159,20 +189,47 @@ public class Home extends AppCompatActivity {
     }
 
     private void closeBusiness() {
-        int sts = 14;
-        business.setId(id);
-        business.setSts(sts);
-
-        String url = HOST+"update_status.php";
+        String url = HOST+"Business/Select/select_business.php";
         params.put("id", business.getId());
-        params.put("sts", business.getSts());
         cliente.post(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if(statusCode == 200){
-                    txtStatus.setText("Fechado");
-                } else{
-                    txtStatus.setText("Falha ao fechar!");
+                    try{
+                        JSONObject result = new JSONObject(new String(responseBody));
+                        if(!result.getString("STATUS_ID").equals("5")){
+                            int sts = 14;
+                            business.setId(id);
+                            business.setSts(sts);
+
+                            String url = HOST+"Business/update_status.php";
+                            params.put("id", business.getId());
+                            params.put("sts", business.getSts());
+                            cliente.post(url, params, new AsyncHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                    if(statusCode == 200){
+                                        txtStatus.setText("Fechado");
+                                    } else{
+                                        txtStatus.setText("Aberto");
+                                        Toast.makeText(employee, "Falha ao fechar!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                                }
+                            });
+                        } else {
+                            Intent intent = new Intent(Home.this, Login.class);
+                            Toast.makeText(Home.this, "Estabelecimento banido!", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
+                        }
+                    }catch(JSONException e){
+                        Toast.makeText(employee, "Erro!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -181,7 +238,6 @@ public class Home extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void getIds(){
