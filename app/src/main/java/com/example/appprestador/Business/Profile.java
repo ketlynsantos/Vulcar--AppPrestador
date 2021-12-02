@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appprestador.Business.Employee;
 import com.example.appprestador.Business.Home;
@@ -38,8 +39,9 @@ public class Profile extends AppCompatActivity {
     public String id;
 
     //Connection MySQL
-    String HOST = "http://192.168.15.127/vulcar_database/Business/";
-    //String HOST = "http://172.20.10.5/vulcar_database/Business/";
+    //String HOST = "http://172.20.10.5/vulcar_database/";
+    //String HOST = "http://192.168.0.106/vulcar_database/";
+    String HOST = "http://192.168.15.123/vulcar_database/Business/";
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
 
@@ -122,12 +124,20 @@ public class Profile extends AppCompatActivity {
         cliente.post(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                try {
-                    JSONObject jsonarray = new JSONObject(new String (responseBody));
-                    String nome = jsonarray.getString("LOJA_NOME");
-                    txtNameBusiness.setText(nome);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if(statusCode == 200) {
+                    try {
+                        JSONObject jsonarray = new JSONObject(new String(responseBody));
+                        String nome = jsonarray.getString("LOJA_NOME");
+                        txtNameBusiness.setText(nome);
+                        if (jsonarray.getString("STATUS_ID").equals("5")) {
+                            Intent intent = new Intent(Profile.this, Login.class);
+                            Toast.makeText(Profile.this, "Estabelecimento banido!", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
