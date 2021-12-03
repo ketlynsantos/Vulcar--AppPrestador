@@ -95,7 +95,7 @@
         android:elevation="1dp" />
 
     <ListView
-        android:id="@+id/lvServices"
+        android:id="@+id/lv_services"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
