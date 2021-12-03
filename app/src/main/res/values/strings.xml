@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">AppPrestador</string>
+
+    <string-array name="category">
+        <item>Categoria</item>
+        <item>RACING</item>
+        <item>SEDAN</item>
+        <item>PICKUP</item>
+        <item>UTILITÁRIO</item>
+        <item>WAGON</item>
+        <item>HATCH</item>
+        <item>MOTOCICLETA</item>
+        <item>COUPÊ</item>
+        <item>SUV</item>
+        <item>OFF-ROAD</item>
+        <item>OUTRO</item>
+    </string-array>
 </resources>
