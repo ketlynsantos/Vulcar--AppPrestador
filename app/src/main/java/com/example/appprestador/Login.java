@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
     //Connection MySQL
     //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.0.106/vulcar_database/";
-    String HOST = "http://192.168.15.129/vulcar_database/";
+    String HOST = "http://192.168.0.106/vulcar_database/";
 
 
     RequestParams params = new RequestParams();

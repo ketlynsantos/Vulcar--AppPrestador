@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import com.example.appprestador.AdapterBusiness.AdapterServices;
 import com.example.appprestador.Model.Services;
 import com.example.appprestador.R;
+import com.example.appprestador.Register;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -36,7 +37,7 @@ public class MyServicesBusiness extends AppCompatActivity {
     //Connection MySQL
     //String HOST = "http://192.168.15.108/vulcar_database/";
     //String HOST = "http://172.20.10.5/vulcar_database/";
-    String HOST = "http://192.168.15.129/vulcar_database/";
+    String HOST = "http://192.168.0.106/vulcar_database/";
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
 
@@ -60,6 +61,15 @@ public class MyServicesBusiness extends AppCompatActivity {
                 Intent itI = new Intent(MyServicesBusiness.this, Profile.class);
                 itI.putExtra("id", id);
                 startActivity(itI);
+            }
+        });
+
+        rlAddService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itR = new Intent(MyServicesBusiness.this, RegisterServices.class);
+                itR.putExtra("id", id);
+                startActivity(itR);
             }
         });
     }
