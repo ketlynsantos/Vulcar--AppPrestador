@@ -1,8 +1,7 @@
 package com.example.appprestador.Model;
 
 public class Employee {
-    private String id, nome, cpf, email, phone, password;
-    private int loja_id, sts;
+    private String id, nome, cpf, email, phone, password, loja_nome, status_nome, id_loja, id_status;
 
     public String getId() {
         return id;
@@ -52,19 +51,35 @@ public class Employee {
         this.password = password;
     }
 
-    public int getLoja_id() {
-        return loja_id;
+    public String getLoja_nome() {
+        return loja_nome;
     }
 
-    public void setLoja_id(int loja_id) {
-        this.loja_id = loja_id;
+    public void setLoja_nome(String loja_nome) {
+        this.loja_nome = loja_nome;
     }
 
-    public int getSts() {
-        return sts;
+    public String getStatus_nome() {
+        return status_nome;
     }
 
-    public void setSts(int sts) {
-        this.sts = sts;
+    public void setStatus_nome(String status_nome) {
+        this.status_nome = status_nome;
+    }
+
+    public String getId_loja() {
+        return id_loja;
+    }
+
+    public void setId_loja(String id_loja) {
+        this.id_loja = id_loja;
+    }
+
+    public String getId_status() {
+        return id_status;
+    }
+
+    public void setId_status(String id_status) {
+        this.id_status = id_status;
     }
 }
