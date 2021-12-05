@@ -10,10 +10,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.appprestador.Login;
+import com.example.appprestador.Model.Business;
 import com.example.appprestador.R;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.textfield.TextInputEditText;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 public class EditAddress extends AppCompatActivity {
 
@@ -26,20 +36,33 @@ public class EditAddress extends AppCompatActivity {
     TextInputEditText edtNewUF;
     TextInputEditText edtNewCep;
     AppCompatButton btnEditar;
+    public String id;
+
+    Business business = new Business();
+    //Connection MySQL
+    //String HOST = "http://192.168.15.108/vulcar_database/";
+    //String HOST = "http://172.20.10.5/vulcar_database/";
+    String HOST = "http://192.168.15.129/vulcar_database/Business/";
+    RequestParams params = new RequestParams();
+    AsyncHttpClient cliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_address);
 
+        cliente = new AsyncHttpClient();
+
         getSupportActionBar().hide();
         getIds();
+        montaObj();
         maskFormat();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditAddress.this, Profile.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
                 finish();
             }
@@ -59,13 +82,98 @@ public class EditAddress extends AppCompatActivity {
                 boolean checkValidations = validationEdit(address, number, neighborhood, city, uf, cep);
 
                 if(checkValidations == true){
-                    Toast.makeText(EditAddress.this, "Sucesso!", Toast.LENGTH_SHORT).show();
+                    business.setId(id);
+                    business.setAddress(address);
+                    business.setNumber(number);
+                    business.setNeighborhood(neighborhood);
+                    business.setComplement(complement);
+                    business.setCity(city);
+                    business.setUf(uf);
+                    business.setCep(cep);
+                    updateAddress(business);
                 }
             }
         });
     }
 
+    private void montaObj() {
+        String url = HOST+"Select/select_business.php";
+        business.setId(id);
+        params.put("id", business.getId());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200) {
+                    try {
+                        JSONObject jsonarray = new JSONObject(new String(responseBody));
+                        String addres = jsonarray.getString("LOJA_ENDERECO");
+                        edtNewAddress.setText(addres);
+                        String number = jsonarray.getString("LOJA_NUM");
+                        edtNewNumber.setText(number);
+                        String neighborhood = jsonarray.getString("LOJA_BAIRRO");
+                        edtNewNeighborhood.setText(neighborhood);
+                        String complement = jsonarray.getString("LOJA_COMP");
+                        edtNewComplement.setText(complement);
+                        String city = jsonarray.getString("LOJA_CIDADE");
+                        edtNewCity.setText(city);
+                        String uf = jsonarray.getString("LOJA_UF");
+                        edtNewUF.setText(uf);
+                        String cep = jsonarray.getString("LOJA_CEP");
+                        edtNewCep.setText(cep);
+
+                        if (jsonarray.getString("STATUS_ID").equals("5")) {
+                            Intent intent = new Intent(EditAddress.this, Login.class);
+                            Toast.makeText(EditAddress.this, "Estabelecimento banido!", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
+    private void updateAddress(Business business) {
+        String url = HOST+"update_address.php";
+
+        params.put("id", business.getId());
+        params.put("address", business.getAddress());
+        params.put("number", business.getNumber());
+        params.put("neighborhood", business.getNeighborhood());
+        params.put("complement", business.getComplement());
+        params.put("city", business.getCity());
+        params.put("uf", business.getUf());
+        params.put("cep", business.getCep());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200) {
+                    Toast.makeText(EditAddress.this, "Endereço atualizado!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(EditAddress.this, Profile.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
     private void getIds(){
+        id = getIntent().getStringExtra("id");
         imgBack = findViewById(R.id.img_back);
         edtNewAddress = findViewById(R.id.edt_new_address);
         edtNewNumber = findViewById(R.id.edt_new_num);

@@ -41,7 +41,7 @@ public class Profile extends AppCompatActivity {
     //Connection MySQL
     //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.0.106/vulcar_database/";
-    String HOST = "http://192.168.0.106/vulcar_database/Business/";
+    String HOST = "http://192.168.15.129/vulcar_database/Business/";
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
 
@@ -87,6 +87,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent itD = new Intent(Profile.this, MyDataBusiness.class);
+                itD.putExtra("id", id);
                 startActivity(itD);
             }
         });
@@ -104,6 +105,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent itAddress = new Intent(Profile.this, EditAddress.class);
+                itAddress.putExtra("id", id);
                 startActivity(itAddress);
             }
         });

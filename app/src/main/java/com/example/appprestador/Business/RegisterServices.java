@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appprestador.Login;
 import com.example.appprestador.Model.Business;
 import com.example.appprestador.Model.Services;
 import com.example.appprestador.R;
@@ -24,6 +25,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -37,11 +41,12 @@ public class RegisterServices extends AppCompatActivity {
     AppCompatButton btnAdd;
     public String id, categoryId;
 
+    Business business = new Business();
     Services services = new Services();
     //Connection MySQL
     //String HOST = "http://192.168.15.108/vulcar_database/Business/";
     //String HOST = "http://172.20.10.5/vulcar_database/Business/";
-    String HOST = "http://192.168.0.106/vulcar_database/Business/";
+    String HOST = "http://192.168.15.123/vulcar_database/Business/";
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
 
@@ -53,10 +58,10 @@ public class RegisterServices extends AppCompatActivity {
 
         cliente = new AsyncHttpClient();
         context = RegisterServices.this;
-        Services services = new Services();
 
         getSupportActionBar().hide();
         getIds();
+        verifyBan();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +141,36 @@ public class RegisterServices extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void verifyBan() {
+        String url = HOST+"Select/select_business.php";
+        business.setId(id);
+        params.put("id", business.getId());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200) {
+                    try {
+                        JSONObject jsonarray = new JSONObject(new String(responseBody));
+                        if (jsonarray.getString("STATUS_ID").equals("5")) {
+                            Intent intent = new Intent(RegisterServices.this, Login.class);
+                            Toast.makeText(RegisterServices.this, "Estabelecimento banido!", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
             }
         });
