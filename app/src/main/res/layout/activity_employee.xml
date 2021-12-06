@@ -7,7 +7,6 @@
     android:background="@color/dark_blue"
     tools:context=".Business.Employee">
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -24,11 +23,104 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_navigator" />
 
-    <ListView
-        android:id="@+id/lv_employees"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:scrollbars="none"/>
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_marginBottom="15dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/semibold"
+                android:text="Meus Funcionários"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="15dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_add_employee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:layout_below="@id/relative_layout_1"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp">
+
+                <ImageView
+                    android:id="@+id/img_add"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_add_services" />
+
+                <TextView
+                    android:id="@+id/text_view_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@id/img_add"
+                    android:fontFamily="@font/semibold"
+                    android:text="Funcionários"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/text_view_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view_1"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="-5dp"
+                    android:layout_toRightOf="@id/img_add"
+                    android:fontFamily="@font/light"
+                    android:text="Adicionar um novo funcionário"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_arrow"
+                    android:rotation="270" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_view_4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/rl_add_service"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:alpha="0.1"
+                android:background="@color/white"
+                android:elevation="1dp" />
+
+            <ListView
+                android:id="@+id/lv_employees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:divider="@android:color/transparent"
+                android:overScrollMode="never"
+                android:scrollbars="none"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </RelativeLayout>

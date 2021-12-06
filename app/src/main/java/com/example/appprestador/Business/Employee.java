@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.appprestador.AdapterBusiness.AdapterEmployees;
@@ -34,6 +37,7 @@ public class Employee extends AppCompatActivity {
 
     public ListView lvEmployees;
     public BottomNavigationView bottomNavigationView;
+    public RelativeLayout rlAddEmployee;
     String id;
 
     com.example.appprestador.Model.Employee employee = new com.example.appprestador.Model.Employee();
@@ -41,7 +45,9 @@ public class Employee extends AppCompatActivity {
     //Connection MySQL
     //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.0.106/vulcar_database/";
-    String HOST = "http://192.168.15.129/vulcar_database/Business/";
+    //String HOST = "http://192.168.15.129/vulcar_database/Business/";
+    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Business/";
+
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
 
@@ -83,10 +89,20 @@ public class Employee extends AppCompatActivity {
                 return false;
             }
         });
+
+        rlAddEmployee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Employee.this, RegisterEmployee.class);
+                it.putExtra("id", id);
+                startActivity(it);
+            }
+        });
     }
 
     private void carregarEmployees() {
         String url = HOST + "Select/select_employee.php";
+
         employee.setId_loja(id);
         params.put("id", employee.getId_loja());
 
@@ -131,6 +147,22 @@ public class Employee extends AppCompatActivity {
             AdapterEmployees adapter = new AdapterEmployees(context, R.layout.adapter_employees, R.id.txt_id, lista);
             lvEmployees.setAdapter(adapter);
 
+            lvEmployees.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent it = new Intent(Employee.this, DataEmployee.class);
+                    it.putExtra("idEmp", lista.get(position).getId());
+                    it.putExtra("nameEmp", lista.get(position).getNome());
+                    it.putExtra("cpfEmp", lista.get(position).getCpf());
+                    it.putExtra("phoneEmp", lista.get(position).getPhone());
+                    it.putExtra("idBus", lista.get(position).getId_loja());
+                    it.putExtra("nameBus", lista.get(position).getLoja_nome());
+                    it.putExtra("id", id);
+                    startActivity(it);
+                    finish();
+                }
+            });
+
         } catch(Exception erro) {
             Log.d("erro", "erro"+erro);
         }
@@ -169,6 +201,7 @@ public class Employee extends AppCompatActivity {
     private void getIds(){
         id = getIntent().getStringExtra("id");
         lvEmployees = findViewById(R.id.lv_employees);
+        rlAddEmployee = findViewById(R.id.rl_add_employee);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
     }
 }
