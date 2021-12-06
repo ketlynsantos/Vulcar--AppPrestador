@@ -102,7 +102,7 @@
                 android:id="@+id/text_view_4"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/rl_add_service"
+                android:layout_below="@id/rl_add_employee"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:alpha="0.1"

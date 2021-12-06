@@ -38,7 +38,7 @@ public class Employee extends AppCompatActivity {
     public ListView lvEmployees;
     public BottomNavigationView bottomNavigationView;
     public RelativeLayout rlAddEmployee;
-    String id;
+    String id, idBuss;
 
     com.example.appprestador.Model.Employee employee = new com.example.appprestador.Model.Employee();
     Business business = new Business();
@@ -46,7 +46,7 @@ public class Employee extends AppCompatActivity {
     //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.0.106/vulcar_database/";
     //String HOST = "http://192.168.15.129/vulcar_database/Business/";
-    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Business/";
+    String HOST = "http://192.168.0.105/Vulcar--Syncmysql/Business/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -72,11 +72,6 @@ public class Employee extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.employee:
-                        return true;
-                    case R.id.home:
-                        Intent intent_h = new Intent(Employee.this, Home.class);
-                        intent_h.putExtra("id", id);
-                        startActivity(intent_h);
                         return true;
                     case R.id.profile:
                         Intent intent_p = new Intent(Employee.this, Profile.class);
@@ -149,11 +144,12 @@ public class Employee extends AppCompatActivity {
 
             lvEmployees.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long i) {
                     Intent it = new Intent(Employee.this, DataEmployee.class);
                     it.putExtra("idEmp", lista.get(position).getId());
                     it.putExtra("nameEmp", lista.get(position).getNome());
                     it.putExtra("cpfEmp", lista.get(position).getCpf());
+                    it.putExtra("emailEmp", lista.get(position).getEmail());
                     it.putExtra("phoneEmp", lista.get(position).getPhone());
                     it.putExtra("idBus", lista.get(position).getId_loja());
                     it.putExtra("nameBus", lista.get(position).getLoja_nome());

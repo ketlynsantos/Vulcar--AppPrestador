@@ -29,51 +29,212 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/relative_layout_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp">
+            android:id="@id/relative_layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/relative_layout_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/text_view_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/semibold"
+                        android:text="Status:"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txt_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/regular"
+                        android:text="Disponivel"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/switch_status_employee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:checked="true"
+                    android:textColor="@color/white"
+                    android:textOff="Indisponivel"
+                    android:textOn="Disponível"
+                    android:thumb="@drawable/sw_thumb"
+                    android:track="@drawable/sw_track" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_layout_2"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp">
 
                 <TextView
-                    android:id="@+id/text_view_1"
+                    android:id="@+id/text_view_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/semibold"
-                    android:text="Status:"
+                    android:text="Serviço atual"
                     android:textColor="@color/white"
                     android:textSize="18dp" />
 
                 <TextView
-                    android:id="@+id/txt_status"
+                    android:id="@+id/txt_name_services"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_below="@id/text_view_2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="2dp"
+                    android:layout_toLeftOf="@id/txt_model_car"
                     android:fontFamily="@font/regular"
-                    android:text="Disponivel"
+                    android:text="Lavagem externa"
                     android:textColor="@color/white"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
 
-            </LinearLayout>
+                <RelativeLayout
+                    android:id="@id/relative_layout_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_name_services"
+                    android:layout_marginTop="15dp">
 
-<!--            <Switch-->
-<!--                android:id="@+id/switch_status_business"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_alignParentRight="true"-->
-<!--                android:textOn="Disponível"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:textOff="Indisponivel"-->
-<!--                android:checked="true"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:thumb="@drawable/sw_thumb"-->
-<!--                android:track="@drawable/sw_track"/>-->
+                    <ImageView
+                        android:id="@+id/img_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/stroke_border_white_10dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="15dp"
+                        android:paddingBottom="20dp"
+                        android:src="@drawable/ic_location" />
+
+                    <RelativeLayout
+                        android:id="@+id/relative_layout_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img_location">
+
+                        <TextView
+                            android:id="@+id/text2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="@font/light"
+                            android:text="Endereço de realização do serviço:"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/txt_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/text2"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_toLeftOf="@id/txt_cep"
+                            android:fontFamily="@font/regular"
+                            android:text="Rua Altonio Arnaldo, 43"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/txt_neigh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_address"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_toLeftOf="@id/txt_cep"
+                            android:fontFamily="@font/light"
+                            android:text="Engenho Novo"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/txt_cep"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_address"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="@font/light"
+                            android:text="06312-8723"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_layout_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relative_layout_4"
+                    android:layout_marginTop="15dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/relative_layout_7">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Daniel Nascimento"
+                                android:textColor="@color/white"
+                                android:fontFamily="@font/regular"
+                                android:id="@+id/txt_name_client"
+                                android:textSize="16dp"/>
+
+                            <TextView
+                                android:id="@+id/txt_model_car"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/txt_name_client"
+                                android:fontFamily="@font/semibold"
+                                android:text="Hb20s"
+                                android:layout_marginTop="5dp"
+                                android:textSize="16dp"
+                                android:textColor="@color/white" />
+
+                        </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/img_person"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ico_person_profile"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

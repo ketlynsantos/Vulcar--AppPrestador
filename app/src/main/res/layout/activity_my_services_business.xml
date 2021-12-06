@@ -34,7 +34,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_add_employee"
+        android:id="@+id/rl_add_services"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/relative_layout_1"
@@ -87,8 +87,9 @@
         android:id="@+id/text_view_3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/rl_add_service"
+        android:layout_below="@id/rl_add_services"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:alpha="0.1"
         android:background="@color/white"
         android:elevation="1dp" />

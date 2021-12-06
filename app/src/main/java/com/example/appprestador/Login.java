@@ -6,7 +6,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -14,14 +13,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.appprestador.Business.Home;
 import com.example.appprestador.Employee.HomeEmployee;
 import com.example.appprestador.Model.Business;
 import com.example.appprestador.Model.Employee;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -45,7 +42,7 @@ public class Login extends AppCompatActivity {
     //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.0.106/vulcar_database/";
     //String HOST = "http://192.168.15.129/vulcar_database/";
-    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/";
+    String HOST = "http://192.168.0.105/Vulcar--Syncmysql/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -151,7 +148,7 @@ public class Login extends AppCompatActivity {
                             } else if(result.getString("STATUS").equals("5")){
                                 Toast.makeText(Login.this, "Conta banida!", Toast.LENGTH_SHORT).show();
                             } else {
-                                Intent intent = new Intent(Login.this, Home.class);
+                                Intent intent = new Intent(Login.this, com.example.appprestador.Business.Employee.class);
                                 intent.putExtra("id", id);
                                 startActivity(intent);
                                 finish();

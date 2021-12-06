@@ -20,7 +20,7 @@ public class DataEmployee extends AppCompatActivity {
     public TextView txtphone;
     public AppCompatButton btnRemoveEmployee;
 
-    public String id;
+    public String id, idBuss, idEmp, nameEmp, cpf, email, phone, nameBus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +30,18 @@ public class DataEmployee extends AppCompatActivity {
         getSupportActionBar().hide();
         getIds();
 
-        txtNameEmployee.setText(getIntent().getStringExtra("nameEmp"));
-        txtCpf.setText(getIntent().getStringExtra("cpfEmp"));
-        txtEmail.setText(getIntent().getStringExtra("emailEmp"));
-        txtphone.setText(getIntent().getStringExtra("phoneEmp"));
+        txtNameEmployee.setText(nameEmp);
+        txtCpf.setText(cpf);
+        txtEmail.setText(email);
+        txtphone.setText(phone);
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent itI = new Intent(DataEmployee.this, Employee.class);
                 itI.putExtra("id", id);
+                itI.putExtra("idBus", idBuss);
+                itI.putExtra("idEmp", idEmp);
                 startActivity(itI);
                 finish();
             }
@@ -55,12 +57,19 @@ public class DataEmployee extends AppCompatActivity {
 
     private void getIds() {
         id = getIntent().getStringExtra("id");
+        idBuss = getIntent().getStringExtra("idBus");
+        idEmp = getIntent().getStringExtra("idEmp");
+        nameEmp = getIntent().getStringExtra("nameEmp");
+        cpf = getIntent().getStringExtra("cpfEmp");
+        email = getIntent().getStringExtra("emailEmp");
+        phone = getIntent().getStringExtra("phoneEmp");
+        nameBus = getIntent().getStringExtra("nameBus");
 
         imgBack = findViewById(R.id.img_back);
-        txtNameEmployee = findViewById(R.id.txt_name_employee);
+        txtNameEmployee = findViewById(R.id.txt_nome);
         txtCpf = findViewById(R.id.txt_cpf);
         txtEmail = findViewById(R.id.txt_email);
-        txtphone = findViewById(R.id.edt_phone);
+        txtphone = findViewById(R.id.txt_phone);
         btnRemoveEmployee = findViewById(R.id.btn_remove);
     }
 }

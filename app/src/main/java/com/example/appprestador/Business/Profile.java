@@ -7,13 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.appprestador.Business.Employee;
-import com.example.appprestador.Business.Home;
 import com.example.appprestador.Login;
 import com.example.appprestador.Model.Business;
 import com.example.appprestador.R;
@@ -37,12 +37,14 @@ public class Profile extends AppCompatActivity {
     public RelativeLayout rlAddress;
     public RelativeLayout rlLogout;
     public String id;
+    public TextView txtStatus;
+    public Switch swStatusBusiness;
 
     //Connection MySQL
     //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.0.106/vulcar_database/";
     //String HOST = "http://192.168.15.129/vulcar_database/Business/";
-    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Business/";
+    String HOST = "http://192.168.0.105/Vulcar--Syncmysql/Business/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -58,6 +60,8 @@ public class Profile extends AppCompatActivity {
         getIds();
         cliente = new AsyncHttpClient();
         montaObj();
+        montaObjStatus();
+
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -73,15 +77,19 @@ public class Profile extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         finish();
                         return true;
-                    case R.id.home:
-                        Intent intent_h = new Intent(Profile.this, Home.class);
-                        intent_h.putExtra("id", id);
-                        startActivity(intent_h);
-                        overridePendingTransition(0,0);
-                        finish();
-                        return true;
                 }
                 return false;
+            }
+        });
+
+        swStatusBusiness.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked == true) {
+                    openBusiness();
+                } else {
+                    closeBusiness();
+                }
             }
         });
 
@@ -122,7 +130,7 @@ public class Profile extends AppCompatActivity {
     }
 
     private void montaObj() {
-        String url = HOST+"Select/select_business.php";
+        String url = HOST + "Select/select_business.php";
         business.setId(id);
         params.put("id", business.getId());
 
@@ -153,8 +161,157 @@ public class Profile extends AppCompatActivity {
         });
     }
 
+    private void montaObjStatus() {
+        business.setId(id);
+        verifyStatus(business);
+    }
+
+    private void verifyStatus(Business business) {
+        String url = HOST + "Select/select_business.php";
+
+        params.put("id", business.getId());
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    try{
+                        JSONObject result = new JSONObject(new String(responseBody));
+                        if(result.getString("STATUS_ID").equals("13")){
+                            swStatusBusiness.setChecked(true);
+                        } else if(result.getString("STATUS_ID").equals("14")){
+                            swStatusBusiness.setChecked(false);
+                        } else if(result.getString("STATUS_ID").equals("1")){
+                            swStatusBusiness.setChecked(false);
+                        } else if(result.getString("STATUS_ID").equals("5")){
+                            Intent intent = new Intent(Profile.this, Login.class);
+                            Toast.makeText(Profile.this, "Estabelecimento banido!", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
+                        } else{
+                            Toast.makeText(employee, "Erro!", Toast.LENGTH_SHORT).show();
+                        }
+                    }catch(JSONException e){
+                        Toast.makeText(employee, "Erro!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
+    private void openBusiness() {
+        String url = HOST + "Select/select_business.php";
+
+        params.put("id", business.getId());
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    try{
+                        JSONObject result = new JSONObject(new String(responseBody));
+                        if(!result.getString("STATUS_ID").equals("5")){
+                            int sts = 13;
+                            business.setId(id);
+                            business.setSts(sts);
+
+                            String url = HOST + "update_status.php";
+                            params.put("id", business.getId());
+                            params.put("sts", business.getSts());
+                            cliente.post(url, params, new AsyncHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                    if(statusCode == 200){
+                                        txtStatus.setText("Aberto");
+                                    } else{
+                                        txtStatus.setText("Fechado");
+                                        Toast.makeText(employee, "Falha ao abrir!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                                }
+                            });
+                        } else {
+                            Intent intent = new Intent(Profile.this, Login.class);
+                            Toast.makeText(Profile.this, "Estabelecimento banido!", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
+                        }
+                    }catch(JSONException e){
+                        Toast.makeText(employee, "Erro!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
+    private void closeBusiness() {
+        String url = HOST + "Select/select_business.php";
+
+        params.put("id", business.getId());
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    try{
+                        JSONObject result = new JSONObject(new String(responseBody));
+                        if(!result.getString("STATUS_ID").equals("5")){
+                            int sts = 14;
+                            business.setId(id);
+                            business.setSts(sts);
+
+                            String url = HOST + "update_status.php";
+                            params.put("id", business.getId());
+                            params.put("sts", business.getSts());
+                            cliente.post(url, params, new AsyncHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                    if(statusCode == 200){
+                                        txtStatus.setText("Fechado");
+                                    } else{
+                                        txtStatus.setText("Aberto");
+                                        Toast.makeText(employee, "Falha ao fechar!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                                }
+                            });
+                        } else {
+                            Intent intent = new Intent(Profile.this, Login.class);
+                            Toast.makeText(Profile.this, "Estabelecimento banido!", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
+                        }
+                    }catch(JSONException e){
+                        Toast.makeText(employee, "Erro!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
     private void getIds() {
         id = getIntent().getStringExtra("id");
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         imgLogo = findViewById(R.id.img_logo_business);
         txtNameBusiness = findViewById(R.id.txt_name_profile);
@@ -162,5 +319,7 @@ public class Profile extends AppCompatActivity {
         rlServices = findViewById(R.id.rl_services);
         rlAddress = findViewById(R.id.rl_address);
         rlLogout = findViewById(R.id.rl_logout);
+        txtStatus = findViewById(R.id.txt_status);
+        swStatusBusiness = findViewById(R.id.switch_status_business);
     }
 }

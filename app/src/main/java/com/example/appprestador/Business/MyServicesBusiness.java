@@ -45,7 +45,7 @@ public class MyServicesBusiness extends AppCompatActivity {
     //String HOST = "http://192.168.15.108/vulcar_database/";
     //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.15.129/vulcar_database/";
-    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/";
+    String HOST = "http://192.168.0.105/Vulcar--Syncmysql/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -166,7 +166,7 @@ public class MyServicesBusiness extends AppCompatActivity {
     private void getIds() {
         id = getIntent().getStringExtra("id");
         imgBack = findViewById(R.id.img_back);
-        rlAddService = findViewById(R.id.rl_add_service);
+        rlAddService = findViewById(R.id.rl_add_services);
         lvServices = findViewById(R.id.lv_services);
     }
 }
