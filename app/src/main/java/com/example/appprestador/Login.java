@@ -187,6 +187,7 @@ public class Login extends AppCompatActivity {
                             if((!result.getString("STATUS").equals("5"))) {
                                 Intent intent = new Intent(Login. this, HomeEmployee.class);
                                 intent.putExtra("id", id);
+                                intent.putExtra("idBuss", id)
                                 startActivity(intent);
                                 finish();
                             } else {
