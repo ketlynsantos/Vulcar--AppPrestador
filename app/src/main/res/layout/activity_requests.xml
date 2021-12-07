@@ -7,7 +7,6 @@
     android:background="@color/dark_blue"
     tools:context=".Employee.Requests">
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -24,19 +23,51 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_navigator_employee" />
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:id="@+id/scroll_view_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@id/bottom_navigation"
+        android:fillViewport="true">
 
-        <RelativeLayout
-            android:id="@+id/relative_layout_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+            <RelativeLayout
+                android:id="@+id/relative_layout_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    android:id="@+id/text_view_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Pedidos em espera"
+                    android:fontFamily="@font/semibold"
+                    android:textSize="20dp"
+                    android:textColor="@color/white"/>
+
+                <ListView
+                    android:id="@+id/lv_serv_wait"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/text_view_1"
+                    android:scrollbars="none"
+                    android:layout_marginTop="15dp"
+                    android:overScrollMode="never"
+                    android:divider="@android:color/transparent"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </RelativeLayout>

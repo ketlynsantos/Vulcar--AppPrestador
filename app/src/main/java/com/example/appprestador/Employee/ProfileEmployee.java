@@ -8,19 +8,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.appprestador.Login;
 import com.example.appprestador.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileEmployee extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
-    public AppCompatButton btnEdit;
-    public TextView txtNameProfile;
-    public TextView txtCpf;
-    public TextView txtEmail;
-    public TextView txtPhone;
+    public RelativeLayout rlData;
+    public RelativeLayout rlLogout;
+    public TextView txtNameEmp;
 
     public String id, idBuss;
 
@@ -46,7 +46,6 @@ public class ProfileEmployee extends AppCompatActivity {
                         itR.putExtra("idBuss", idBuss);
                         overridePendingTransition(0,0);
                         startActivity(itR);
-                        finish();
                         return true;
                     case R.id.home:
                         Intent itH = new Intent(getApplicationContext(), HomeEmployee.class);
@@ -54,18 +53,27 @@ public class ProfileEmployee extends AppCompatActivity {
                         itH.putExtra("idBuss", idBuss);
                         overridePendingTransition(0,0);
                         startActivity(itH);
-                        finish();
                         return true;
                 }
                 return false;
             }
         });
 
-        btnEdit.setOnClickListener(new View.OnClickListener() {
+        rlData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(ProfileEmployee.this, EditDataEmployee.class);
+                Intent it = new Intent(ProfileEmployee.this, MyDataEmployee.class);
+                it.putExtra("id", id);
+                it.putExtra("idBuss", idBuss);
                 startActivity(it);
+            }
+        });
+
+        rlLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileEmployee.this, Login.class));
+                finish();
             }
         });
     }
@@ -75,10 +83,8 @@ public class ProfileEmployee extends AppCompatActivity {
         idBuss = getIntent().getStringExtra("idBuss");
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        btnEdit = findViewById(R.id.btn_edit_data);
-        txtNameProfile = findViewById(R.id.txt_name_employee);
-        txtCpf = findViewById(R.id.txt_cpf);
-        txtEmail = findViewById(R.id.txt_email);
-        txtPhone = findViewById(R.id.txt_phone);
+        rlData = findViewById(R.id.rl_data);
+        rlLogout = findViewById(R.id.rl_logout);
+        txtNameEmp = findViewById(R.id.txt_name_employee);
     }
 }

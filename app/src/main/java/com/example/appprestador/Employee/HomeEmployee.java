@@ -8,12 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.appprestador.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class HomeEmployee extends AppCompatActivity {
 
@@ -26,6 +29,8 @@ public class HomeEmployee extends AppCompatActivity {
     public TextView txtModelVehicle;
     public TextView txtStatus;
     public Switch swStatusEmp;
+    public RelativeLayout rlActualServ;
+    public RelativeLayout rlNoServ;
 
     public String id, idBuss;
 
@@ -99,5 +104,7 @@ public class HomeEmployee extends AppCompatActivity {
         txtModelVehicle = findViewById(R.id.txt_model_car);
         txtStatus = findViewById(R.id.txt_status);
         swStatusEmp = findViewById(R.id.switch_status_employee);
+        rlActualServ = findViewById(R.id.rl_serv_actual);
+        rlNoServ = findViewById(R.id.rl_no_actual_serv);
     }
 }

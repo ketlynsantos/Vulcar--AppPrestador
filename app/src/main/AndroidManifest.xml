@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppPrestador">
-        <activity android:name=".Business.RegisterEmployee"></activity>
+        <activity android:name=".Employee.EditPasswordEmployee"></activity>
+        <activity android:name=".Employee.EditDataContactEmployee" />
+        <activity android:name=".Employee.EditDataEmployee" />
+        <activity android:name=".Employee.MyDataEmployee" />
+        <activity android:name=".Business.RegisterEmployee" />
         <activity android:name=".Business.DataEmployee" />
         <activity android:name=".Business.EditPasswordBusiness" />
         <activity android:name=".Business.RegisterServices" />
@@ -21,7 +25,6 @@
         <activity android:name=".Business.EditDataContact" />
         <activity android:name=".Business.MyServicesBusiness" />
         <activity android:name=".Business.EditDataBusiness" />
-        <activity android:name=".Employee.EditDataEmployee" />
         <activity android:name=".Business.EditAddress" />
         <activity android:name=".Employee.Requests" />
         <activity android:name=".Employee.ProfileEmployee" />

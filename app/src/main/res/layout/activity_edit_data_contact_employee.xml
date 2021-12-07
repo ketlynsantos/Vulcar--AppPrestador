@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".Employee.EditDataEmployee">
+    tools:context=".Employee.EditDataContactEmployee">
 
     <RelativeLayout
         android:id="@+id/relative_layout_1"
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/semibold"
-            android:text="Informações da Empresa"
+            android:text="Informações de contato"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20dp" />
@@ -46,7 +46,7 @@
             style="@style/EditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome da empresa"
+            android:hint="E-mail"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -58,25 +58,25 @@
             app:hintTextColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_name_emp"
+                android:id="@+id/edt_email_emp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
-                android:inputType="text"
                 android:padding="10dp"
+                android:inputType="text"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edt_cpf_layout"
+            android:id="@+id/edt_cnpj_layout"
             style="@style/EditTextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_below="@id/edt_name_layout"
             android:layout_marginTop="20dp"
-            android:hint="CPF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Celular"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -88,12 +88,12 @@
             app:hintTextColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_cpf_emp"
+                android:id="@+id/edt_phone_emp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
-                android:inputType="number"
                 android:padding="10dp"
+                android:inputType="number"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
 
@@ -102,7 +102,7 @@
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_edit_data"
+        android:id="@+id/btn_edit_contact"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"

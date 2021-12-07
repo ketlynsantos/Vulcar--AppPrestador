@@ -33,9 +33,9 @@ public class EditPasswordBusiness extends AppCompatActivity {
     Business business = new Business();
     //Connection MySQL
     //String HOST = "http://192.168.15.108/vulcar_database/";
-    //String HOST = "http://172.20.10.5/vulcar_database/";
+    String HOST = "http://172.20.10.6/Vulcar--Syncmysql/Business/";
     //String HOST = "http://192.168.15.129/vulcar_database/Business/";
-    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Business/";
+    //String HOST = "http://192.168.0.101/Vulcar--Syncmysql/Business/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -54,6 +54,7 @@ public class EditPasswordBusiness extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent itI = new Intent(EditPasswordBusiness.this, MyDataBusiness.class);
+                itI.putExtra("id", id);
                 startActivity(itI);
                 finish();
             }
@@ -77,7 +78,7 @@ public class EditPasswordBusiness extends AppCompatActivity {
     }
 
     private void updatePassword(Business business, String newPass) {
-        String url = HOST+"update_pass.php";
+        String url = HOST + "update_pass.php";
 
         params.put("id", business.getId());
         params.put("old_pass", business.getPassword());
@@ -114,7 +115,7 @@ public class EditPasswordBusiness extends AppCompatActivity {
     }
 
     private void verifyBan() {
-        String url = HOST+"Select/select_business.php";
+        String url = HOST + "Select/select_business.php";
         business.setId(id);
         params.put("id", business.getId());
 
@@ -145,6 +146,7 @@ public class EditPasswordBusiness extends AppCompatActivity {
 
     private void getIds() {
         id = getIntent().getStringExtra("id");
+
         imgBack = findViewById(R.id.img_back);
         edtPassword = findViewById(R.id.edt_password_business);
         edtNewPassword = findViewById(R.id.edt_new_password_business);

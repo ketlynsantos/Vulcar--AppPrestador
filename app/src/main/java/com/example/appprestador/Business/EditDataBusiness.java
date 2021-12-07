@@ -36,9 +36,9 @@ public class EditDataBusiness extends AppCompatActivity {
     Business business = new Business();
     //Connection MySQL
     //String HOST = "http://192.168.15.108/vulcar_database/";
-    //String HOST = "http://172.20.10.5/vulcar_database/";
+    String HOST = "http://172.20.10.6/Vulcar--Syncmysql/Business/";
     //String HOST = "http://192.168.15.129/vulcar_database/Business/";
-    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/Business/";
+    //String HOST = "http://192.168.0.101/Vulcar--Syncmysql/Business/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -98,6 +98,7 @@ public class EditDataBusiness extends AppCompatActivity {
             return true;
         }
     }
+
     private void updateData(Business business) {
         String url = HOST+"update_data.php";
 
