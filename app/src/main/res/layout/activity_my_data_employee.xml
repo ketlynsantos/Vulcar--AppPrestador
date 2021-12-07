@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Business.MyDataBusiness"
-    android:background="@color/dark_blue">
+    android:background="@color/dark_blue"
+    tools:context=".Employee.MyDataEmployee">
 
     <RelativeLayout
         android:id="@+id/relative_layout_1"
@@ -44,7 +44,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/rl_data_business"
+            android:id="@+id/rl_data_emp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

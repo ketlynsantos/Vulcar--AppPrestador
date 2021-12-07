@@ -26,54 +26,414 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_marginBottom="15dp">
 
         <RelativeLayout
-            android:id="@+id/relative_layout_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp">
+            android:id="@id/relative_layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/relative_layout_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/text_view_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/semibold"
+                        android:text="Status:"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txt_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/regular"
+                        android:text="Disponivel"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/switch_status_employee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:checked="true"
+                    android:textColor="@color/white"
+                    android:textOff="Indisponivel"
+                    android:textOn="Disponível"
+                    android:thumb="@drawable/sw_thumb"
+                    android:track="@drawable/sw_track" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_serv_actual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_layout_2"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/stroke_border_white_10dp"
+                android:padding="15dp"
+                android:visibility="visible">
 
                 <TextView
-                    android:id="@+id/text_view_1"
+                    android:id="@+id/text_view_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/semibold"
-                    android:text="Status:"
+                    android:text="Serviço atual"
                     android:textColor="@color/white"
                     android:textSize="18dp" />
 
                 <TextView
-                    android:id="@+id/txt_status"
+                    android:id="@+id/txt_name_services"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_below="@id/text_view_2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="2dp"
                     android:fontFamily="@font/regular"
-                    android:text="Disponivel"
+                    android:text="Lavagem externa"
                     android:textColor="@color/white"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
 
-            </LinearLayout>
+                <RelativeLayout
+                    android:id="@id/relative_layout_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_name_services"
+                    android:layout_marginTop="15dp">
 
-<!--            <Switch-->
-<!--                android:id="@+id/switch_status_business"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_alignParentRight="true"-->
-<!--                android:textOn="Disponível"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:textOff="Indisponivel"-->
-<!--                android:checked="true"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:thumb="@drawable/sw_thumb"-->
-<!--                android:track="@drawable/sw_track"/>-->
+                    <ImageView
+                        android:id="@+id/img_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/stroke_border_white_10dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="15dp"
+                        android:paddingBottom="20dp"
+                        android:src="@drawable/ic_location" />
+
+                    <RelativeLayout
+                        android:id="@+id/relative_layout_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img_location">
+
+                        <TextView
+                            android:id="@+id/text2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="@font/light"
+                            android:text="Endereço de realização do serviço:"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/txt_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/text2"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_toLeftOf="@id/txt_cep"
+                            android:fontFamily="@font/regular"
+                            android:text="Rua Altonio Arnaldo, 43"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/txt_neigh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_address"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_toLeftOf="@id/txt_cep"
+                            android:fontFamily="@font/light"
+                            android:text="Engenho Novo"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/txt_cep"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_address"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="@font/light"
+                            android:text="06312-8723"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/relative_layout_4"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:alpha="0.1"
+                    android:background="@color/white"
+                    android:elevation="1dp" />
+
+                <RelativeLayout
+                    android:id="@+id/relative_layout_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/line">
+
+                    <RelativeLayout
+                        android:id="@+id/relative_layout_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/txt_name_client"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/regular"
+                            android:text="Daniel Nascimento"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/txt_model_car"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_name_client"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/semibold"
+                            android:text="Hb20s"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/img_person"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ico_person_profile" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_layout_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relative_layout_6"
+                    android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:id="@+id/text_view_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_view_6"
+                        android:fontFamily="@font/semibold"
+                        android:text="Forma de pagamento"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                    <RelativeLayout
+                        android:id="@+id/linear_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_view_6"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/stroke_border_white_10dp"
+                        android:padding="15dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/txt_money"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_money"
+                            android:drawablePadding="15dp"
+                            android:fontFamily="@font/light"
+                            android:text="Dinheiro"
+                            android:textAlignment="textStart"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+
+                        <RelativeLayout
+                            android:id="@+id/rl_thing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/txt_money"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/txt_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toLeftOf="@id/txt_thing"
+                                android:fontFamily="@font/regular"
+                                android:text="Troco para "
+                                android:textColor="@color/white"
+                                android:textSize="14dp" />
+
+                            <TextView
+                                android:id="@+id/txt_thing"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:fontFamily="@font/regular"
+                                android:text="R$ 80.00"
+                                android:textColor="@color/white"
+                                android:textSize="14dp" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/txt_no_thing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/regular"
+                            android:text="Sem troco"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_credit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/linear_money"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/stroke_border_white_10dp"
+                        android:orientation="vertical"
+                        android:padding="15dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/txt_credit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_card"
+                            android:drawablePadding="15dp"
+                            android:fontFamily="@font/light"
+                            android:text="Cartão Crédito"
+                            android:textAlignment="textStart"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_debit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/linear_credit"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/stroke_border_white_10dp"
+                        android:orientation="vertical"
+                        android:padding="15dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/txt_debit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_card"
+                            android:drawablePadding="15dp"
+                            android:drawableTint="#FFFFFF"
+                            android:fontFamily="@font/light"
+                            android:text="Cartão Débito"
+                            android:textAlignment="textStart"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_concluided"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/relative_layout_8"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/button_blue"
+                    android:backgroundTint="@color/clear_blue"
+                    android:elevation="2dp"
+                    android:fontFamily="@font/bold"
+                    android:text="Marcar como concluído"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_no_actual_serv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_layout_2"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/stroke_border_white_10dp"
+                android:padding="15dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/img_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_cancel_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@id/img_cancel"
+                    android:fontFamily="@font/semibold"
+                    android:text="Nenhum serviço em andamento"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

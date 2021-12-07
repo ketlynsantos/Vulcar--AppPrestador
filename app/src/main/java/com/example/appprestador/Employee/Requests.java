@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.example.appprestador.Employee.HomeEmployee;
 import com.example.appprestador.Employee.ProfileEmployee;
@@ -15,6 +16,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Requests extends AppCompatActivity {
 
     public BottomNavigationView bottomNavigationView;
+    //List View para lista os serviços que estão em espera
+    public ListView lvServiceWait;
+    public String id, idBuss;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +27,6 @@ public class Requests extends AppCompatActivity {
 
         getSupportActionBar().hide();
         getIds();
-
 
         bottomNavigationView.setSelectedItemId(R.id.requests);
 
@@ -34,14 +37,18 @@ public class Requests extends AppCompatActivity {
                     case R.id.requests:
                         return true;
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomeEmployee.class));
+                        Intent itH = new Intent(getApplicationContext(), HomeEmployee.class);
                         overridePendingTransition(0,0);
-                        finish();
+                        itH.putExtra("id", id);
+                        itH.putExtra("idBuss", idBuss);
+                        startActivity(itH);
                         return true;
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(), ProfileEmployee.class));
+                        Intent itP = new Intent(getApplicationContext(), ProfileEmployee.class);
                         overridePendingTransition(0,0);
-                        finish();
+                        itP.putExtra("id", id);
+                        itP.putExtra("idBuss", idBuss);
+                        startActivity(itP);
                         return true;
                 }
                 return false;
@@ -49,7 +56,11 @@ public class Requests extends AppCompatActivity {
         });
     }
 
-    public void getIds(){
+    public void getIds() {
+        id = getIntent().getStringExtra("id");
+        idBuss = getIntent().getStringExtra("idBuss");
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        lvServiceWait = findViewById(R.id.lv_serv_wait);
     }
 }

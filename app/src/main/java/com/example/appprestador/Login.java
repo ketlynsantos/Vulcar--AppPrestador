@@ -6,7 +6,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -14,14 +13,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.appprestador.Business.Home;
 import com.example.appprestador.Employee.HomeEmployee;
 import com.example.appprestador.Model.Business;
 import com.example.appprestador.Model.Employee;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -41,11 +38,13 @@ public class Login extends AppCompatActivity {
     AppCompatButton btnLoginBusiness, btnLoginEmployee;
     LinearLayout linearLayout1;
 
+    String id, idEmp;
+
     //Connection MySQL
     //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.0.106/vulcar_database/";
-    String HOST = "http://192.168.15.129/vulcar_database/";
-
+    //String HOST = "http://192.168.15.129/vulcar_database/";
+    String HOST = "http://192.168.15.113/Vulcar--Syncmysql/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -143,7 +142,7 @@ public class Login extends AppCompatActivity {
                     try {
                         JSONObject result = new JSONObject(new String(responseBody));
                         if (!result.getString("LOGIN").equals(null)) {
-                            String id = result.getString("LOGIN");
+                            id = result.getString("LOGIN");
                             if(result.getString("STATUS").equals("2")){
                                 Toast.makeText(Login.this, "Conta recusada!", Toast.LENGTH_SHORT).show();
                             } else if(result.getString("STATUS").equals("3")){
@@ -151,7 +150,7 @@ public class Login extends AppCompatActivity {
                             } else if(result.getString("STATUS").equals("5")){
                                 Toast.makeText(Login.this, "Conta banida!", Toast.LENGTH_SHORT).show();
                             } else {
-                                Intent intent = new Intent(Login.this, Home.class);
+                                Intent intent = new Intent(Login.this, com.example.appprestador.Business.Employee.class);
                                 intent.putExtra("id", id);
                                 startActivity(intent);
                                 finish();
@@ -185,11 +184,13 @@ public class Login extends AppCompatActivity {
                     try {
                         JSONObject result = new JSONObject(new String(responseBody));
                         if (!result.getString("LOGIN").equals(null)) {
-                            String id = result.getString("LOGIN");
+                            idEmp = result.getString("LOGIN");
+                            id = result.getString("LOJA_ID");
 
                             if((!result.getString("STATUS").equals("5"))) {
                                 Intent intent = new Intent(Login. this, HomeEmployee.class);
-                                intent.putExtra("id", id);
+                                intent.putExtra("id", idEmp);
+                                intent.putExtra("idBuss", id);
                                 startActivity(intent);
                                 finish();
                             } else {

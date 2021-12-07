@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/background_menu"
+        android:backgroundTint="@color/white"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/txt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/txt_model_car"
+            android:fontFamily="@font/semibold"
+            android:visibility="gone"
+            android:textColor="@color/dark_blue"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txt_id_serv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/txt_model_car"
+            android:fontFamily="@font/semibold"
+            android:visibility="gone"
+            android:textColor="@color/dark_blue"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txt_name_services"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/txt_model_car"
+            android:fontFamily="@font/semibold"
+            android:text="Lavagem externa"
+            android:textColor="@color/dark_blue"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txt_desc_services"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:fontFamily="@font/light"
+            android:text="Lavagem externa na lataria do carro"
+            android:textColor="@color/dark_blue"
+            android:textSize="14dp"
+            android:layout_below="@id/txt_name_services"/>
+
+        <TextView
+            android:id="@+id/txt_model_car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="@font/regular"
+            android:text="Hb20s" />
+
+        <RelativeLayout
+            android:id="@id/relative_layout_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_desc_services"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/img_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_border_dark_10dp"
+                android:paddingStart="15dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="20dp"
+                android:src="@drawable/ic_location_blue" />
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/img_location">
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/light"
+                    android:text="Endereço de realização do serviço:"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/txt_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_toLeftOf="@id/txt_cep"
+                    android:fontFamily="@font/regular"
+                    android:text="Rua Altonio Arnaldo, 43"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/txt_neigh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_address"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_toLeftOf="@id/txt_cep"
+                    android:fontFamily="@font/light"
+                    android:text="Engenho Novo"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/txt_cep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_address"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/light"
+                    android:text="06312-8723"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_accept_serv"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/relative_layout_4"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_blue"
+            android:backgroundTint="@color/clear_blue"
+            android:elevation="2dp"
+            android:fontFamily="@font/bold"
+            android:text="Aceitar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

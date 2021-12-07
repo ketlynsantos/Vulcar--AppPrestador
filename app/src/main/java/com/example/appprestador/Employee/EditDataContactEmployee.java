@@ -9,9 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.appprestador.Business.EditDataBusiness;
+import com.example.appprestador.Business.EditDataContact;
 import com.example.appprestador.Business.MyDataBusiness;
-import com.example.appprestador.Login;
 import com.example.appprestador.Model.Employee;
 import com.example.appprestador.R;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
@@ -26,11 +25,11 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
-public class EditDataEmployee extends AppCompatActivity {
+public class EditDataContactEmployee extends AppCompatActivity {
 
     public ImageView imgBack;
-    public TextInputEditText edtName;
-    public TextInputEditText edtCPF;
+    public TextInputEditText edtEmail;
+    public TextInputEditText edtPhone;
     public AppCompatButton btnEdit;
 
     public String id, idBuss;
@@ -49,18 +48,19 @@ public class EditDataEmployee extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_data_employee);
+        setContentView(R.layout.activity_edit_data_contact_employee);
 
         getSupportActionBar().hide();
         getIds();
-        maskFormat();
+
         cliente = new AsyncHttpClient();
         montaObj();
+        maskFormat();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent itI = new Intent(EditDataEmployee.this, MyDataEmployee.class);
+                Intent itI = new Intent(EditDataContactEmployee.this, MyDataEmployee.class);
                 itI.putExtra("id", id);
                 itI.putExtra("idBuss", idBuss);
                 startActivity(itI);
@@ -71,33 +71,33 @@ public class EditDataEmployee extends AppCompatActivity {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = edtName.getText().toString();
-                String cpf = edtCPF.getText().toString();
+                String email = edtEmail.getText().toString();
+                String phone = edtPhone.getText().toString();
 
-                boolean checkValidations = validationEdit(name, cpf);
+                boolean checkValidations = validationEdit(email, phone);
                 if(checkValidations == true){
                     employee.setId(id);
-                    employee.setNome(name);
-                    employee.setCpf(cpf);
-                    updateData(employee);
+                    employee.setEmail(email);
+                    employee.setPhone(phone);
+                    updateContact(employee);
                 }
             }
         });
     }
 
-    private void updateData(Employee employee) {
-        String url = HOST + "update_data.php";
+    private void updateContact(Employee employee) {
+        String url = HOST + "update_contact.php";
 
         params.put("id", employee.getId());
-        params.put("name", employee.getNome());
-        params.put("cpf", employee.getCpf());
+        params.put("email", employee.getEmail());
+        params.put("phone", employee.getPhone());
 
         cliente.post(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if(statusCode == 200) {
-                    Toast.makeText(EditDataEmployee.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(EditDataEmployee.this, MyDataEmployee.class);
+                    Toast.makeText(EditDataContactEmployee.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(EditDataContactEmployee.this, MyDataEmployee.class);
                     intent.putExtra("id", id);
                     intent.putExtra("idBuss", idBuss);
                     startActivity(intent);
@@ -124,11 +124,11 @@ public class EditDataEmployee extends AppCompatActivity {
                 if(statusCode == 200) {
                     try {
                         JSONObject jsonarray = new JSONObject(new String(responseBody));
-                        String nome = jsonarray.getString("FUNCIONARIO_NOME");
-                        String cpf = jsonarray.getString("FUNCIONARIO_CPF");
+                        String email = jsonarray.getString("FUNCIONARIO_EMAIL");
+                        String phone = jsonarray.getString("FUNCIONARIO_TEL");
 
-                        edtName.setText(nome);
-                        edtCPF.setText(cpf);
+                        edtEmail.setText(email);
+                        edtPhone.setText(phone);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -148,33 +148,37 @@ public class EditDataEmployee extends AppCompatActivity {
         idBuss = getIntent().getStringExtra("idBuss");
 
         imgBack = findViewById(R.id.img_back);
-        edtName = findViewById(R.id.edt_name_emp);
-        edtCPF = findViewById(R.id.edt_cpf_emp);
-        btnEdit = findViewById(R.id.btn_edit_data);
+        edtEmail = findViewById(R.id.edt_email_emp);
+        edtPhone = findViewById(R.id.edt_phone_emp);
+        btnEdit = findViewById(R.id.btn_edit_contact);
     }
 
-    public Boolean validationEdit(String name, String cpf){
-        if(name.length() == 0){
-            edtName.requestFocus();
-            edtName.setError("Campo vazio.");
+
+    private void maskFormat() {
+        SimpleMaskFormatter mask_tel = new SimpleMaskFormatter("(NN) NNNNN-NNNN");
+        MaskTextWatcher mtw_tel = new MaskTextWatcher(edtPhone, mask_tel);
+        edtPhone.addTextChangedListener(mtw_tel);
+    }
+
+    private Boolean validationEdit(String email, String phone){
+        if(email.length() == 0){
+            edtEmail.requestFocus();
+            edtEmail.setError("Campo vazio.");
             return false;
-        } else if (cpf.length() == 0) {
-            edtCPF.requestFocus();
-            edtCPF.setError("Campo vazio.");
+        } else if(!email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")) {
+            edtEmail.requestFocus();
+            edtEmail.setError("Email inválido!");
             return false;
-        } else if (cpf.length() != 14) {
-            edtCPF.requestFocus();
-            edtCPF.setError("CPF inválido!");
+        } else if (phone.length() == 0) {
+            edtPhone.requestFocus();
+            edtPhone.setError("Campo vazio.");
+            return false;
+        } else if (phone.length() != 15) {
+            edtPhone.requestFocus();
+            edtPhone.setError("Telefone inválido!");
             return false;
         } else {
             return true;
         }
     }
-
-    public void maskFormat() {
-        SimpleMaskFormatter mask_cpf = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
-        MaskTextWatcher mtw_cpf= new MaskTextWatcher(edtCPF, mask_cpf);
-        edtCPF.addTextChangedListener(mtw_cpf);
-    }
-
 }

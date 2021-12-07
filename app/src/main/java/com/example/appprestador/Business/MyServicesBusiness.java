@@ -40,10 +40,13 @@ public class MyServicesBusiness extends AppCompatActivity {
 
     Business business = new Business();
     Services services = new Services();
+
     //Connection MySQL
     //String HOST = "http://192.168.15.108/vulcar_database/";
     //String HOST = "http://172.20.10.5/vulcar_database/";
-    String HOST = "http://192.168.15.129/vulcar_database/";
+    //String HOST = "http://192.168.15.129/vulcar_database/";
+    String HOST = "http://172.20.10.6/Vulcar--Syncmysql/";
+
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
 
@@ -81,7 +84,7 @@ public class MyServicesBusiness extends AppCompatActivity {
     }
 
     private void montaObj() {
-        String url = HOST+"Select/select_business.php";
+        String url = HOST + "Business/Select/select_business.php";
         business.setId(id);
         params.put("id", business.getId());
 
@@ -163,7 +166,7 @@ public class MyServicesBusiness extends AppCompatActivity {
     private void getIds() {
         id = getIntent().getStringExtra("id");
         imgBack = findViewById(R.id.img_back);
-        rlAddService = findViewById(R.id.rl_add_service);
+        rlAddService = findViewById(R.id.rl_add_services);
         lvServices = findViewById(R.id.lv_services);
     }
 }
