@@ -10,10 +10,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.appprestador.Business.Profile;
 import com.example.appprestador.Login;
+import com.example.appprestador.Model.Business;
+import com.example.appprestador.Model.Employee;
 import com.example.appprestador.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 public class ProfileEmployee extends AppCompatActivity {
 
@@ -24,6 +36,17 @@ public class ProfileEmployee extends AppCompatActivity {
 
     public String id, idBuss;
 
+    //Connection MySQL
+    //String HOST = "http://172.20.10.5/vulcar_database/";
+    //String HOST = "http://192.168.0.106/vulcar_database/";
+    //String HOST = "http://192.168.15.129/vulcar_database/Business/";
+    String HOST = "http://192.168.15.113/Vulcar--Syncmysql/Employee/";
+
+    RequestParams params = new RequestParams();
+    AsyncHttpClient cliente;
+
+    Employee employee = new Employee();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +54,8 @@ public class ProfileEmployee extends AppCompatActivity {
 
         getSupportActionBar().hide();
         getIds();
+        cliente = new AsyncHttpClient();
+        montaObj();
 
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
@@ -73,7 +98,34 @@ public class ProfileEmployee extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ProfileEmployee.this, Login.class));
-                finish();
+                //finish();
+            }
+        });
+    }
+
+    private void montaObj() {
+        String url = HOST + "Select/select_employee.php";
+
+        employee.setId(id);
+        params.put("id", employee.getId());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200) {
+                    try {
+                        JSONObject jsonarray = new JSONObject(new String(responseBody));
+                        String nome = jsonarray.getString("FUNCIONARIO_NOME");
+                        txtNameEmp.setText(nome);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
             }
         });
     }
@@ -83,7 +135,7 @@ public class ProfileEmployee extends AppCompatActivity {
         idBuss = getIntent().getStringExtra("idBuss");
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        rlData = findViewById(R.id.rl_data);
+        rlData = findViewById(R.id.rl_data_emp);
         rlLogout = findViewById(R.id.rl_logout);
         txtNameEmp = findViewById(R.id.txt_name_employee);
     }

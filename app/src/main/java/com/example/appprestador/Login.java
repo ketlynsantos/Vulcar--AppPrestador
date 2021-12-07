@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
     //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.0.106/vulcar_database/";
     //String HOST = "http://192.168.15.129/vulcar_database/";
-    String HOST = "http://192.168.0.106/Vulcar--Syncmysql/";
+    String HOST = "http://192.168.15.113/Vulcar--Syncmysql/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -185,6 +185,7 @@ public class Login extends AppCompatActivity {
                         JSONObject result = new JSONObject(new String(responseBody));
                         if (!result.getString("LOGIN").equals(null)) {
                             idEmp = result.getString("LOGIN");
+                            id = result.getString("LOJA_ID");
 
                             if((!result.getString("STATUS").equals("5"))) {
                                 Intent intent = new Intent(Login. this, HomeEmployee.class);

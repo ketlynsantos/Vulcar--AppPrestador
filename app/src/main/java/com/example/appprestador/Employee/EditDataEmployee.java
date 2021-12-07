@@ -7,14 +7,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.appprestador.Business.EditDataBusiness;
 import com.example.appprestador.Business.MyDataBusiness;
+import com.example.appprestador.Login;
 import com.example.appprestador.Model.Employee;
 import com.example.appprestador.R;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.textfield.TextInputEditText;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 public class EditDataEmployee extends AppCompatActivity {
 
@@ -24,6 +34,16 @@ public class EditDataEmployee extends AppCompatActivity {
     public AppCompatButton btnEdit;
 
     public String id, idBuss;
+
+    //Connection MySQL
+    //String HOST = "http://172.20.10.5/vulcar_database/";
+    //String HOST = "http://192.168.0.106/vulcar_database/";
+    //String HOST = "http://192.168.15.129/vulcar_database/Business/";
+    String HOST = "http://192.168.15.113/Vulcar--Syncmysql/Employee/";
+
+    RequestParams params = new RequestParams();
+    AsyncHttpClient cliente;
+
     public Employee employee = new Employee();
 
     @Override
@@ -34,6 +54,8 @@ public class EditDataEmployee extends AppCompatActivity {
         getSupportActionBar().hide();
         getIds();
         maskFormat();
+        cliente = new AsyncHttpClient();
+        montaObj();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,8 +79,66 @@ public class EditDataEmployee extends AppCompatActivity {
                     employee.setId(id);
                     employee.setNome(name);
                     employee.setCpf(cpf);
-                    //updateData(employee);
+                    updateData(employee);
                 }
+            }
+        });
+    }
+
+    private void updateData(Employee employee) {
+        String url = HOST + "update_data.php";
+
+        params.put("id", employee.getId());
+        params.put("name", employee.getNome());
+        params.put("cpf", employee.getCpf());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200) {
+                    Toast.makeText(EditDataEmployee.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(EditDataEmployee.this, MyDataEmployee.class);
+                    intent.putExtra("id", id);
+                    intent.putExtra("idBuss", idBuss);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
+    private void montaObj() {
+        String url = HOST + "Select/select_employee.php";
+
+        employee.setId(id);
+        params.put("id", employee.getId());
+
+        cliente.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200) {
+                    try {
+                        JSONObject jsonarray = new JSONObject(new String(responseBody));
+                        String nome = jsonarray.getString("FUNCIONARIO_NOME");
+                        String cpf = jsonarray.getString("FUNCIONARIO_CPF");
+
+                        edtName.setText(nome);
+                        edtCPF.setText(cpf);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
             }
         });
     }

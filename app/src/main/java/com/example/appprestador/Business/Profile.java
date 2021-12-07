@@ -131,6 +131,7 @@ public class Profile extends AppCompatActivity {
 
     private void montaObj() {
         String url = HOST + "Select/select_business.php";
+
         business.setId(id);
         params.put("id", business.getId());
 

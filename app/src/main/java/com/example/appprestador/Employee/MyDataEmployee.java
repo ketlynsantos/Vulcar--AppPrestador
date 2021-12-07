@@ -77,7 +77,7 @@ public class MyDataEmployee extends AppCompatActivity {
         idBuss = getIntent().getStringExtra("idBuss");
 
         imgBack = findViewById(R.id.img_back);
-        rlData = findViewById(R.id.rl_data_business);
+        rlData = findViewById(R.id.rl_data_emp);
         rlContact = findViewById(R.id.rl_data_contact);
         rlPassword = findViewById(R.id.rl_alter_password);
     }
