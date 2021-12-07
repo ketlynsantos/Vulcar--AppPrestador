@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -45,23 +46,50 @@ public class HomeEmployee extends AppCompatActivity {
                     case R.id.home:
                         return true;
                     case R.id.requests:
-                        startActivity(new Intent(getApplicationContext(), Requests.class));
+                        Intent itR = new Intent(getApplicationContext(), Requests.class);
+                        itR.putExtra("id", id);
+                        itR.putExtra("idBuss", idBuss);
                         overridePendingTransition(0,0);
+                        startActivity(itR);
                         finish();
                         return true;
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(), ProfileEmployee.class));
+                        Intent itP = new Intent(getApplicationContext(), ProfileEmployee.class);
+                        itP.putExtra("id", id);
+                        itP.putExtra("idBuss", idBuss);
                         overridePendingTransition(0,0);
+                        startActivity(itP);
                         finish();
                         return true;
                 }
                 return false;
             }
         });
+
+        swStatusEmp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked == true) {
+                    openBusiness();
+                } else {
+                    closeBusiness();
+                }
+            }
+        });
+    }
+
+    private void openBusiness() {
+
+    }
+
+    private void closeBusiness() {
+
     }
 
     public void getIds() {
         id = getIntent().getStringExtra("id");
+        idBuss = getIntent().getStringExtra("idBuss");
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         txtNameServices = findViewById(R.id.txt_name_services);
         txtAddress = findViewById(R.id.txt_address);

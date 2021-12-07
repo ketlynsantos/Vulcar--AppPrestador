@@ -38,11 +38,13 @@ public class Login extends AppCompatActivity {
     AppCompatButton btnLoginBusiness, btnLoginEmployee;
     LinearLayout linearLayout1;
 
+    String id, idEmp;
+
     //Connection MySQL
     //String HOST = "http://172.20.10.5/vulcar_database/";
     //String HOST = "http://192.168.0.106/vulcar_database/";
     //String HOST = "http://192.168.15.129/vulcar_database/";
-    String HOST = "http://192.168.0.105/Vulcar--Syncmysql/";
+    String HOST = "http://192.168.0.13/Vulcar--Syncmysql/";
 
     RequestParams params = new RequestParams();
     AsyncHttpClient cliente;
@@ -140,7 +142,7 @@ public class Login extends AppCompatActivity {
                     try {
                         JSONObject result = new JSONObject(new String(responseBody));
                         if (!result.getString("LOGIN").equals(null)) {
-                            String id = result.getString("LOGIN");
+                            id = result.getString("LOGIN");
                             if(result.getString("STATUS").equals("2")){
                                 Toast.makeText(Login.this, "Conta recusada!", Toast.LENGTH_SHORT).show();
                             } else if(result.getString("STATUS").equals("3")){
@@ -182,12 +184,12 @@ public class Login extends AppCompatActivity {
                     try {
                         JSONObject result = new JSONObject(new String(responseBody));
                         if (!result.getString("LOGIN").equals(null)) {
-                            String id = result.getString("LOGIN");
+                            idEmp = result.getString("LOGIN");
 
                             if((!result.getString("STATUS").equals("5"))) {
                                 Intent intent = new Intent(Login. this, HomeEmployee.class);
-                                intent.putExtra("id", id);
-                                intent.putExtra("idBuss", id)
+                                intent.putExtra("id", idEmp);
+                                intent.putExtra("idBuss", id);
                                 startActivity(intent);
                                 finish();
                             } else {

@@ -22,6 +22,8 @@ public class ProfileEmployee extends AppCompatActivity {
     public TextView txtEmail;
     public TextView txtPhone;
 
+    public String id, idBuss;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +41,19 @@ public class ProfileEmployee extends AppCompatActivity {
                     case R.id.profile:
                         return true;
                     case R.id.requests:
-                        startActivity(new Intent(getApplicationContext(), Requests.class));
+                        Intent itR = new Intent(getApplicationContext(), Requests.class);
+                        itR.putExtra("id", id);
+                        itR.putExtra("idBuss", idBuss);
                         overridePendingTransition(0,0);
+                        startActivity(itR);
                         finish();
                         return true;
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomeEmployee.class));
+                        Intent itH = new Intent(getApplicationContext(), HomeEmployee.class);
+                        itH.putExtra("id", id);
+                        itH.putExtra("idBuss", idBuss);
                         overridePendingTransition(0,0);
+                        startActivity(itH);
                         finish();
                         return true;
                 }
@@ -63,6 +71,9 @@ public class ProfileEmployee extends AppCompatActivity {
     }
 
     public void getIds(){
+        id = getIntent().getStringExtra("id");
+        idBuss = getIntent().getStringExtra("idBuss");
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         btnEdit = findViewById(R.id.btn_edit_data);
         txtNameProfile = findViewById(R.id.txt_name_employee);
