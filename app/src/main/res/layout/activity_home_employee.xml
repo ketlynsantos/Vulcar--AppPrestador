@@ -39,13 +39,22 @@
                 android:id="@+id/rl_serv_actual"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/relative_layout_2"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/stroke_border_white_10dp"
                 android:padding="15dp"
                 android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/txt_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/semibold"
+                    android:text="Serviço atual"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/text_view_2"
@@ -64,7 +73,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_marginTop="2dp"
                     android:fontFamily="@font/regular"
-                    android:text="Lavagem externa"
+                    android:text="Sem serviço"
                     android:textColor="@color/white"
                     android:textSize="16dp" />
 
@@ -112,7 +121,7 @@
                             android:layout_marginStart="15dp"
                             android:layout_toLeftOf="@id/txt_cep"
                             android:fontFamily="@font/regular"
-                            android:text="Rua Altonio Arnaldo, 43"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="16dp" />
 
@@ -125,7 +134,7 @@
                             android:layout_marginStart="15dp"
                             android:layout_toLeftOf="@id/txt_cep"
                             android:fontFamily="@font/light"
-                            android:text="Engenho Novo"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="14dp" />
 
@@ -137,7 +146,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginStart="15dp"
                             android:fontFamily="@font/light"
-                            android:text="06312-8723"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="14dp" />
 
@@ -172,7 +181,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/regular"
-                            android:text="Daniel Nascimento"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="16dp" />
 
@@ -183,7 +192,7 @@
                             android:layout_below="@id/txt_name_client"
                             android:layout_marginTop="5dp"
                             android:fontFamily="@font/semibold"
-                            android:text="Hb20s"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="16dp" />
 
@@ -360,7 +369,7 @@
                 android:id="@+id/rl_no_actual_serv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/relative_layout_2"
+                android:layout_below="@id/rl_serv_actual"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
