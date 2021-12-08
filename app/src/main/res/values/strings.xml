@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppPrestador</string>
+    <string name="app_name">Vulcar Prestador</string>
 
     <string-array name="category">
         <item>Categoria</item>

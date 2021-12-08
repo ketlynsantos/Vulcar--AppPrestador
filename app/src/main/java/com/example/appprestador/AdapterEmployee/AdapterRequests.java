@@ -83,7 +83,7 @@ public class AdapterRequests extends ArrayAdapter<ItemsBudget> {
                 //Toast.makeText(context, "Entra", Toast.LENGTH_SHORT).show();
 
                 cliente = new AsyncHttpClient();
-                String HOST = "http://192.168.15.113/Vulcar--Syncmysql/Employee/";
+                String HOST = "http://192.168.15.112/vulcar_database/Employee/";
                 String url = HOST+"update_status_orc.php";
 
                 params.put("id", idOrc);
@@ -98,7 +98,6 @@ public class AdapterRequests extends ArrayAdapter<ItemsBudget> {
                                     Intent intent = new Intent(context, HomeEmployee.class);
                                     intent.putExtra("id", idFunc);
                                     intent.putExtra("idBus", idBus);
-                                    Toast.makeText(context, "Foi", Toast.LENGTH_SHORT).show();
                                     context.startActivity(intent);
                                 }
                             } catch (JSONException e) {
