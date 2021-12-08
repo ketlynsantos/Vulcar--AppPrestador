@@ -70,24 +70,9 @@ public class HomeEmployee extends AppCompatActivity {
                 return false;
             }
         });
-
-        swStatusEmp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked == true) {
-                    openBusiness();
-                } else {
-                    closeBusiness();
-                }
-            }
-        });
     }
 
-    private void openBusiness() {
-
-    }
-
-    private void closeBusiness() {
+    private void montaObj() {
 
     }
 
@@ -103,7 +88,7 @@ public class HomeEmployee extends AppCompatActivity {
         txtNameClient = findViewById(R.id.txt_name_client);
         txtModelVehicle = findViewById(R.id.txt_model_car);
         txtStatus = findViewById(R.id.txt_status);
-        swStatusEmp = findViewById(R.id.switch_status_employee);
+        //swStatusEmp = findViewById(R.id.switch_status_employee);
         rlActualServ = findViewById(R.id.rl_serv_actual);
         rlNoServ = findViewById(R.id.rl_no_actual_serv);
     }
