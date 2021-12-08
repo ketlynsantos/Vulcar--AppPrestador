@@ -2,7 +2,15 @@ package com.example.appprestador.Model;
 
 public class ItemsBudget {
     private String id, idOrcamento, idServico, nomeServico, descServico, idAutomovel, modeloAutomovel, idFuncionario,
-            nomeFuncionario, idLoja, endereço, num, bairro, cep;
+            nomeFuncionario, idLoja, nomeLoja, endereço, num, bairro, cep;
+
+    public String getNomeLoja() {
+        return nomeLoja;
+    }
+
+    public void setNomeLoja(String nomeLoja) {
+        this.nomeLoja = nomeLoja;
+    }
 
     public String getId() {
         return id;
